@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using log4net;
 
-namespace SaveMyDatabase
+namespace AutoCreateBackupPlan.Standart
 {
     class SQLHelper
     {

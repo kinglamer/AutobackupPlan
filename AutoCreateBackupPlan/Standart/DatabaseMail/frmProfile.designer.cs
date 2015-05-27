@@ -1,4 +1,4 @@
-﻿namespace SaveMyDatabase.DatabaseMail
+﻿namespace AutoCreateBackupPlan.Standart.DatabaseMail
 {
     partial class frmProfile
     {

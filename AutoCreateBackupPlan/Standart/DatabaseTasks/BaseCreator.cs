@@ -3,7 +3,7 @@ using log4net;
 using System;
 using System.Data.SqlClient;
 
-namespace SaveMyDatabase.DatabaseTasks
+namespace AutoCreateBackupPlan.Standart.DatabaseTasks
 {
     class BaseCreator : ICreatorTasks
     {

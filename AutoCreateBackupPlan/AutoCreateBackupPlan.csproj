@@ -104,11 +104,12 @@
     <Compile Include="Standart\DatabaseTasks\SystemTask\SystemTaskConstants.cs" />
     <Compile Include="Standart\DatabaseTasks\SystemTask\TaskCheckDB.cs" />
     <Compile Include="Standart\DatabaseTasks\SystemTask\TaskFileStatistic.cs" />
-    <Compile Include="Standart\frmMain.cs">
+    <Compile Include="Standart\Dunm.cs" />
+    <Compile Include="Standart\frmStandart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Standart\frmMain.designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="Standart\frmStandart.designer.cs">
+      <DependentUpon>frmStandart.cs</DependentUpon>
     </Compile>
     <Compile Include="Standart\frmSetAddress.cs">
       <SubType>Form</SubType>
@@ -150,8 +151,8 @@
     <EmbeddedResource Include="Standart\DatabaseTasks\SystemTask\frmEmail.resx">
       <DependentUpon>frmEmail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Standart\frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="Standart\frmStandart.resx">
+      <DependentUpon>frmStandart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Standart\frmSetAddress.resx">
       <DependentUpon>frmSetAddress.cs</DependentUpon>

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SaveMyDatabase.DatabaseMail
+namespace AutoCreateBackupPlan.Standart.DatabaseMail
 {
     public partial class frmProfile : Form
     {

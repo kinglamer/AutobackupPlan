@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AutoCreateBackupPlan.Express;
+using AutoCreateBackupPlan.Standart;
 
 
 namespace AutoCreateBackupPlan
@@ -21,6 +22,12 @@ namespace AutoCreateBackupPlan
         private void btExpress_Click(object sender, EventArgs e)
         {
             frmExpress frm = new frmExpress();
+            frm.ShowDialog();
+        }
+
+        private void btStandart_Click(object sender, EventArgs e)
+        {
+            frmStandart frm = new frmStandart();
             frm.ShowDialog();
         }
     }

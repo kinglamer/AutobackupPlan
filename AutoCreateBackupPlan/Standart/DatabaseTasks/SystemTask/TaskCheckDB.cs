@@ -1,5 +1,5 @@
 ﻿
-namespace SaveMyDatabase.DatabaseTasks.SystemTask
+namespace AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask
 {
     class TaskCheckDB : BaseCreator
     {

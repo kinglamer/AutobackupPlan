@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SaveMyDatabase.DatabaseTasks.SystemTask
+namespace AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask
 {
     class SystemTaskConstants
     {

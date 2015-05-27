@@ -1,5 +1,5 @@
 ﻿
-namespace SaveMyDatabase.DatabaseTasks
+namespace AutoCreateBackupPlan.Standart.DatabaseTasks
 {
     class BackupFolders
     {

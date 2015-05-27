@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using log4net;
 
-namespace SaveMyDatabase.DatabaseMail
+namespace AutoCreateBackupPlan.Standart.DatabaseMail
 {
     class DataBaseOperations
     {

@@ -50,6 +50,7 @@
             this.btStandart.TabIndex = 1;
             this.btStandart.Text = "MS SQL Standart";
             this.btStandart.UseVisualStyleBackColor = true;
+            this.btStandart.Click += new System.EventHandler(this.btStandart_Click);
             // 
             // frmMain
             // 

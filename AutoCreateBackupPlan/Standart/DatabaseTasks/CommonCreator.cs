@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SaveMyDatabase.DatabaseTasks
+namespace AutoCreateBackupPlan.Standart.DatabaseTasks
 {
     public enum CategorySqlTask
     {

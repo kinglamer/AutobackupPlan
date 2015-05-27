@@ -1,7 +1,7 @@
 ﻿
 using System.Data.SqlClient;
 
-namespace SaveMyDatabase.DatabaseTasks
+namespace AutoCreateBackupPlan.Standart.DatabaseTasks
 {
     interface ICreatorTasks
     {

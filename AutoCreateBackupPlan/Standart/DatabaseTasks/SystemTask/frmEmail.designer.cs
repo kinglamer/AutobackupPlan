@@ -1,4 +1,4 @@
-﻿namespace SaveMyDatabase.DatabaseTasks.SystemTask
+﻿namespace AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask
 {
     partial class frmEmail
     {

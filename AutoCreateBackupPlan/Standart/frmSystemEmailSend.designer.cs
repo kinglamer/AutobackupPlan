@@ -1,4 +1,4 @@
-﻿namespace SaveMyDatabase
+﻿namespace AutoCreateBackupPlan.Standart
 {
     partial class frmSystemEmailSend
     {

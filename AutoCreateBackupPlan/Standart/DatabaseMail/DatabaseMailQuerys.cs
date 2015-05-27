@@ -1,5 +1,5 @@
 ﻿
-namespace SaveMyDatabase.DatabaseMail
+namespace AutoCreateBackupPlan.Standart.DatabaseMail
 {
     internal class DatabaseMailQuerys
     {

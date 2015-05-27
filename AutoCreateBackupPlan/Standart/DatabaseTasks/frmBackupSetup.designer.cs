@@ -1,4 +1,4 @@
-﻿namespace SaveMyDatabase.DatabaseTasks
+﻿namespace AutoCreateBackupPlan.Standart.DatabaseTasks
 {
     partial class frmBackupSetup
     {

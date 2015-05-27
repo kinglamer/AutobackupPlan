@@ -1,10 +1,10 @@
-﻿using SaveMyDatabase.DatabaseMail;
+﻿using AutoCreateBackupPlan.Standart.DatabaseMail;
 using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
-namespace SaveMyDatabase.DatabaseTasks
+namespace AutoCreateBackupPlan.Standart.DatabaseTasks
 {
     public partial class frmBackupSetup : Form
     {

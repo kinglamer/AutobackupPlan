@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace SaveMyDatabase.DatabaseMail
+namespace AutoCreateBackupPlan.Standart.DatabaseMail
 {
     class ValidatorDatabaseMail
     {

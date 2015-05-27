@@ -1,6 +1,6 @@
-﻿namespace SaveMyDatabase
+﻿namespace AutoCreateBackupPlan.Standart
 {
-    partial class frmMain
+    partial class frmStandart
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStandart));
             this.btSendEmail = new System.Windows.Forms.Button();
             this.btCreateNotify = new System.Windows.Forms.Button();
             this.iList = new System.Windows.Forms.ImageList(this.components);
@@ -176,7 +176,7 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Настроить DatabaseMail";
             // 
-            // frmMain
+            // frmStandart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -192,7 +192,7 @@
             this.Controls.Add(this.btInstall);
             this.Controls.Add(this.btCreateNotify);
             this.Controls.Add(this.btSendEmail);
-            this.Name = "frmMain";
+            this.Name = "frmStandart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Модуль настройки резервного копирования";
             this.Load += new System.EventHandler(this.frmMain_Load);

@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
 
-namespace SaveMyDatabase
+namespace AutoCreateBackupPlan.Standart
 {
     public partial class frmSystemEmailSend : Form
     {

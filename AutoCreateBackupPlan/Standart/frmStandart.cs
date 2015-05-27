@@ -1,27 +1,27 @@
 ﻿using System.Net;
 using System.Net.Mail;
-using SaveMyDatabase.DatabaseMail;
+using AutoCreateBackupPlan.Standart.DatabaseMail;
+using AutoCreateBackupPlan.Standart.DatabaseTasks;
+using AutoCreateBackupPlan.Standart.DatabaseTasks.BackupSystemTasks;
+using AutoCreateBackupPlan.Standart.DatabaseTasks.BackUpTasks;
+using AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask;
 using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using SaveMyDatabase.DatabaseTasks;
-using SaveMyDatabase.DatabaseTasks.BackUpTasks;
-using SaveMyDatabase.DatabaseTasks.BackupSystemTasks;
-using SaveMyDatabase.DatabaseTasks.SystemTask;
 using log4net;
 
-namespace SaveMyDatabase
+namespace AutoCreateBackupPlan.Standart
 {
-    public partial class frmMain : Form
+    public partial class frmStandart : Form
     {
         private SqlConnection sqlConnection1 { get; set; }
-        public frmMain()
+        public frmStandart()
         {
             InitializeComponent();
           
         }
-        private static readonly ILog log = LogManager.GetLogger(typeof(frmMain));
+        private static readonly ILog log = LogManager.GetLogger(typeof(frmStandart));
 
 
         private void btSendEmail_Click(object sender, EventArgs e)
