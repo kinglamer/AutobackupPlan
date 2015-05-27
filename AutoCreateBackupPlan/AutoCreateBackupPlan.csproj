@@ -104,7 +104,6 @@
     <Compile Include="Standart\DatabaseTasks\SystemTask\SystemTaskConstants.cs" />
     <Compile Include="Standart\DatabaseTasks\SystemTask\TaskCheckDB.cs" />
     <Compile Include="Standart\DatabaseTasks\SystemTask\TaskFileStatistic.cs" />
-    <Compile Include="Standart\Dunm.cs" />
     <Compile Include="Standart\frmStandart.cs">
       <SubType>Form</SubType>
     </Compile>
