@@ -48,11 +48,7 @@ namespace AutoCreateBackupPlan.Standart
         {
             SendMail(tbSmtpServer.Text, tbLogin.Text,tbSMTPPort.Text, tbPass.Text, tbToWho.Text, "Тест почты", "Все отправляется хорошо");
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SendMail("mail.biz-it.ru", "budaev@biz-it.ru","25", "Ghfrnbr1", "budaev@biz-it.ru", "La la", "Bla bla");
-        }
+        
 
         private void btClose_Click(object sender, EventArgs e)
         {

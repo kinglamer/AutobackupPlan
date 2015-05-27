@@ -52,7 +52,7 @@ namespace AutoCreateBackupPlan.Standart
 
                     sqlConnection1 = new SqlConnection(
                         string.Format(@"Data Source={0};User ID={1};Password={2};",
-                                      ClassConstHelper.serverDelo, 
+                                      ClassConstHelper.serverSQL, 
                                       frm.UserLogin, 
                                       frm.UserPass));
 
@@ -80,20 +80,20 @@ namespace AutoCreateBackupPlan.Standart
 
                 if (frm.EmailAdministrator)
                 {
-                    TaskCheckDB task = new TaskCheckDB("BIT.DBCC.CHECKDB",
-                                                       "Проверка БД Дело перед созданием полной копии базы",
-                                                       ClassConstHelper.serverDelo,
+                    TaskCheckDB task = new TaskCheckDB("King.DBCC.CHECKDB",
+                                                       "Проверка БД перед созданием полной копии базы",
+                                                       ClassConstHelper.serverSQL,
                                                        "Проверка",
-                                                       ClassConstHelper.deloDB);
+                                                       ClassConstHelper.DB);
                     task.Create(sqlConnection1, "TaskCheckDB");
 
 
 
-                    TaskFileStatistic taskFile = new TaskFileStatistic("BIT.File.Statistics",
-                                                                       "Информация о том, как распределено место в файловых группах базы Дело",
-                                                                       ClassConstHelper.serverDelo,
+                    TaskFileStatistic taskFile = new TaskFileStatistic("King.File.Statistics",
+                                                                       "Информация о том, как распределено место в файловых группах базы",
+                                                                       ClassConstHelper.serverSQL,
                                                                        "Получение статистики",
-                                                                       ClassConstHelper.deloDB);
+                                                                       ClassConstHelper.DB);
                     taskFile.Create(sqlConnection1, "TaskFileStatistic");
 
                     rtbLog.AppendText("Настроены задачи дополнительного анализа БД\r\n");
@@ -127,41 +127,41 @@ namespace AutoCreateBackupPlan.Standart
                     }
 
 
-                    TaskBackUpTransaction task = new TaskBackUpTransaction("BIT.Backup.Transaction",
-                    "Копия журналов транзакций базы данных Дело",
-                     ClassConstHelper.serverDelo,
+                    TaskBackUpTransaction task = new TaskBackUpTransaction("King.Backup.Transaction",
+                    "Копия журналов транзакций базы данных",
+                     ClassConstHelper.serverSQL,
                      "Копия",
-                     ClassConstHelper.deloDB, BackupFolders.pathTransaction);
+                     ClassConstHelper.DB, BackupFolders.pathTransaction);
                     task.Create(sqlConnection1, "TaskBackUpTransaction");
 
-                    TaskBackupDifferent taskDiff = new TaskBackupDifferent("BIT.Backup.Different",
-                        "Создание разностной копии базы данных Дело. С последующим удалением резервных копий журналов транзакций",
-                          ClassConstHelper.serverDelo,
+                    TaskBackupDifferent taskDiff = new TaskBackupDifferent("King.Backup.Different",
+                        "Создание разностной копии базы данных. С последующим удалением резервных копий журналов транзакций",
+                          ClassConstHelper.serverSQL,
                          "Копия",
-                         ClassConstHelper.deloDB, BackupFolders.pathDifferent);
+                         ClassConstHelper.DB, BackupFolders.pathDifferent);
                     taskDiff.Create(sqlConnection1, "TaskBackupDifferent");
 
-                    TaskBackupFull taskFull = new TaskBackupFull("BIT.Backup.Full",
-                        "Создание полной копии БД Дело. С последующим удалением журналов транзакций и разностных копий.",
-                          ClassConstHelper.serverDelo,
+                    TaskBackupFull taskFull = new TaskBackupFull("King.Backup.Full",
+                        "Создание полной копии БД. С последующим удалением журналов транзакций и разностных копий.",
+                          ClassConstHelper.serverSQL,
                          "Копия",
-                         ClassConstHelper.deloDB, BackupFolders.pathFull);
+                         ClassConstHelper.DB, BackupFolders.pathFull);
                     taskFull.Create(sqlConnection1, "TaskBackupFull");
 
-                    rtbLog.AppendText("Настроен задачи резервного копирования БД Дело\r\n");
+                    rtbLog.AppendText("Настроен задачи резервного копирования БД\r\n");
 
 
-                  
-                        TaskBackupMaster taskMaster = new TaskBackupMaster("BIT.Backup.master",
+
+                    TaskBackupMaster taskMaster = new TaskBackupMaster("King.Backup.master",
                           "Копия системной базы данных master",
-                           ClassConstHelper.serverDelo,
+                           ClassConstHelper.serverSQL,
                            "Копия",
                            "master", BackupFolders.pathMasterDB);
                         taskMaster.Create(sqlConnection1, "TaskBackupMaster");
 
-                        TaskBackupMsdb taskMSDB = new TaskBackupMsdb("BIT.Backup.msdb",
+                        TaskBackupMsdb taskMSDB = new TaskBackupMsdb("King.Backup.msdb",
                           "Копия системной базы данных msdb",
-                           ClassConstHelper.serverDelo,
+                           ClassConstHelper.serverSQL,
                            "Копия",
                            "msdb", BackupFolders.pathMSDB);
                         taskMSDB.Create(sqlConnection1, "TaskBackupMsdb");
@@ -187,7 +187,7 @@ namespace AutoCreateBackupPlan.Standart
                                     select   
                                         j.job_id
                                     from dbo.sysjobs j
-                                    where j.name like 'BIT.%'
+                                    where j.name like 'King.%'
 
                                     open job_cursor
 

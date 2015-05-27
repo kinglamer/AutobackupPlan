@@ -38,7 +38,6 @@
             this.tbUser = new System.Windows.Forms.TextBox();
             this.tbOwner = new System.Windows.Forms.TextBox();
             this.tbPass = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.btCheckEmail = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -130,16 +129,6 @@
             this.tbPass.TabIndex = 9;
             this.tbPass.Validating += new System.ComponentModel.CancelEventHandler(this.tbPass_Validating);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(253, 134);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "test";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btCheckEmail
             // 
             this.btCheckEmail.Location = new System.Drawing.Point(66, 199);
@@ -156,7 +145,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(287, 234);
             this.Controls.Add(this.btCheckEmail);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbOwner);
             this.Controls.Add(this.tbUser);
@@ -188,7 +176,6 @@
         private System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.TextBox tbOwner;
         private System.Windows.Forms.TextBox tbPass;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btCheckEmail;
     }
 }

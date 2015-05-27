@@ -40,7 +40,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btSend = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -144,22 +143,11 @@
             this.btClose.UseVisualStyleBackColor = true;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(16, 136);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "test";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frmSystemEmailSend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(433, 171);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btClose);
             this.Controls.Add(this.btSend);
             this.Controls.Add(this.label5);
@@ -193,6 +181,5 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btSend;
         private System.Windows.Forms.Button btClose;
-        private System.Windows.Forms.Button button1;
     }
 }

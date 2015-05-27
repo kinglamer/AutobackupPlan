@@ -57,8 +57,8 @@ namespace AutoCreateBackupPlan.Standart
                 UserLogin = tbUser.Text;
                 UserPass = tbPass.Text;
 
-                ClassConstHelper.deloDB = tbOwner.Text + "_DB";
-                ClassConstHelper.serverDelo = tbServer.Text;
+                ClassConstHelper.DB = tbOwner.Text + "_DB";
+                ClassConstHelper.serverSQL = tbServer.Text;
 
                 ConnectReady = true;
                 Close();
@@ -69,15 +69,7 @@ namespace AutoCreateBackupPlan.Standart
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ClassConstHelper.deloDB = "DELO_DB";
-            ClassConstHelper.serverDelo =@"budaev\sql";
-             UserLogin = "sa";
-                UserPass = "123";
-                ConnectReady = true;
-                Close();
-        }
+ 
 
         private void btCheckEmail_Click(object sender, EventArgs e)
         {

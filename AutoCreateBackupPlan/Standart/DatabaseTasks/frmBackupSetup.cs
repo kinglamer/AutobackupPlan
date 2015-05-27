@@ -200,11 +200,11 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks
 
         private void button1_Click(object sender, EventArgs e)
         {
-            tbFull.Text = @"C:\BIT\backup\full\";
-            tbDiff.Text = @"C:\BIT\backup\diff\";
-            tbTran.Text = @"C:\BIT\backup\tran\";
-            tbMSDB.Text = @"C:\BIT\backup\msdb\";
-            tbMaster.Text = @"C:\BIT\backup\master\";
+            tbFull.Text = @"C:\King\backup\full\";
+            tbDiff.Text = @"C:\King\backup\diff\";
+            tbTran.Text = @"C:\King\backup\tran\";
+            tbMSDB.Text = @"C:\King\backup\msdb\";
+            tbMaster.Text = @"C:\King\backup\master\";
             validDiff = validFull = validMSDB = validMaster = validTran = true;
             btAdd_Click(sender, e);
         }

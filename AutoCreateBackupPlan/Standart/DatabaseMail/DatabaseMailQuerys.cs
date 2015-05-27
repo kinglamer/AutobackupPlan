@@ -24,7 +24,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
         {
             return string.Format(@"EXECUTE msdb.dbo.sysmail_add_profile_sp
                    @profile_name = '{0}',
-                   @description = 'Профиль для уведомления о событиях связанных с базой данных Дело';",
+                   @description = 'Профиль для уведомления о событиях связанных с базой данных';",
                                                                                             ClassConstHelper.profileName);
         }
 

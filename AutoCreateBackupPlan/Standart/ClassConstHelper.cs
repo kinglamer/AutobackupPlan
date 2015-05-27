@@ -9,12 +9,12 @@ namespace AutoCreateBackupPlan.Standart
     {
        
 
-        public static readonly string emailOperatorName = "BIT.Operator";
-        public static readonly string profileName = "BIT.DELO.Profile";
-        public static readonly string accountName = "BIT.DELO.Account";
+        public static readonly string emailOperatorName = "King.Operator";
+        public static readonly string profileName = "King.Profile";
+        public static readonly string accountName = "King.Account";
 
-        public static string deloDB { get; set; }
-        public static string serverDelo { get; set; }
+        public static string DB { get; set; }
+        public static string serverSQL { get; set; }
 
        
     }
