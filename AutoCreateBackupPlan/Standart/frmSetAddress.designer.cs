@@ -38,11 +38,12 @@
             this.tbUser = new System.Windows.Forms.TextBox();
             this.tbOwner = new System.Windows.Forms.TextBox();
             this.tbPass = new System.Windows.Forms.TextBox();
+            this.btTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btConnect
             // 
-            this.btConnect.Location = new System.Drawing.Point(78, 134);
+            this.btConnect.Location = new System.Drawing.Point(127, 121);
             this.btConnect.Name = "btConnect";
             this.btConnect.Size = new System.Drawing.Size(78, 23);
             this.btConnect.TabIndex = 10;
@@ -52,7 +53,7 @@
             // 
             // btClose
             // 
-            this.btClose.Location = new System.Drawing.Point(162, 134);
+            this.btClose.Location = new System.Drawing.Point(211, 121);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(75, 23);
             this.btClose.TabIndex = 1;
@@ -72,16 +73,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 47);
+            this.label2.Location = new System.Drawing.Point(50, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 13);
+            this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Имя владельца БД";
+            this.label2.Text = "Название БД";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 73);
+            this.label3.Location = new System.Drawing.Point(50, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 13);
             this.label3.TabIndex = 4;
@@ -90,7 +91,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 99);
+            this.label4.Location = new System.Drawing.Point(43, 73);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 13);
             this.label4.TabIndex = 5;
@@ -106,7 +107,7 @@
             // 
             // tbUser
             // 
-            this.tbUser.Location = new System.Drawing.Point(137, 70);
+            this.tbUser.Location = new System.Drawing.Point(137, 44);
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(119, 20);
             this.tbUser.TabIndex = 8;
@@ -114,7 +115,7 @@
             // 
             // tbOwner
             // 
-            this.tbOwner.Location = new System.Drawing.Point(137, 44);
+            this.tbOwner.Location = new System.Drawing.Point(137, 96);
             this.tbOwner.Name = "tbOwner";
             this.tbOwner.Size = new System.Drawing.Size(119, 20);
             this.tbOwner.TabIndex = 7;
@@ -122,17 +123,28 @@
             // 
             // tbPass
             // 
-            this.tbPass.Location = new System.Drawing.Point(137, 96);
+            this.tbPass.Location = new System.Drawing.Point(137, 70);
             this.tbPass.Name = "tbPass";
             this.tbPass.Size = new System.Drawing.Size(119, 20);
             this.tbPass.TabIndex = 9;
             this.tbPass.Validating += new System.ComponentModel.CancelEventHandler(this.tbPass_Validating);
             // 
+            // btTest
+            // 
+            this.btTest.Location = new System.Drawing.Point(12, 121);
+            this.btTest.Name = "btTest";
+            this.btTest.Size = new System.Drawing.Size(78, 23);
+            this.btTest.TabIndex = 11;
+            this.btTest.Text = "Проверить";
+            this.btTest.UseVisualStyleBackColor = true;
+            this.btTest.Click += new System.EventHandler(this.btTest_Click);
+            // 
             // frmSetAddress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(287, 168);
+            this.ClientSize = new System.Drawing.Size(311, 156);
+            this.Controls.Add(this.btTest);
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbOwner);
             this.Controls.Add(this.tbUser);
@@ -164,5 +176,6 @@
         private System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.TextBox tbOwner;
         private System.Windows.Forms.TextBox tbPass;
+        private System.Windows.Forms.Button btTest;
     }
 }

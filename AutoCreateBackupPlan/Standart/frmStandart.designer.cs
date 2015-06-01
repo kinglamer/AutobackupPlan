@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStandart));
-            this.btSendEmail = new System.Windows.Forms.Button();
             this.btCreateNotify = new System.Windows.Forms.Button();
             this.iList = new System.Windows.Forms.ImageList(this.components);
             this.btInstall = new System.Windows.Forms.Button();
@@ -45,17 +44,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btSendEmail
-            // 
-            this.btSendEmail.Enabled = false;
-            this.btSendEmail.Location = new System.Drawing.Point(12, 328);
-            this.btSendEmail.Name = "btSendEmail";
-            this.btSendEmail.Size = new System.Drawing.Size(111, 23);
-            this.btSendEmail.TabIndex = 1;
-            this.btSendEmail.Text = "Проверить почту";
-            this.btSendEmail.UseVisualStyleBackColor = true;
-            this.btSendEmail.Click += new System.EventHandler(this.btSendEmail_Click);
             // 
             // btCreateNotify
             // 
@@ -191,7 +179,6 @@
             this.Controls.Add(this.btDelete);
             this.Controls.Add(this.btInstall);
             this.Controls.Add(this.btCreateNotify);
-            this.Controls.Add(this.btSendEmail);
             this.Name = "frmStandart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Модуль настройки резервного копирования";
@@ -204,7 +191,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btSendEmail;
         private System.Windows.Forms.Button btCreateNotify;
         private System.Windows.Forms.Button btInstall;
         private System.Windows.Forms.ImageList iList;

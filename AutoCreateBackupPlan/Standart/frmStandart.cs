@@ -23,23 +23,7 @@ namespace AutoCreateBackupPlan.Standart
         }
         private static readonly ILog log = LogManager.GetLogger(typeof(frmStandart));
 
-
-        private void btSendEmail_Click(object sender, EventArgs e)
-        {
-            if (sqlConnection1.State == ConnectionState.Open)
-            {
-                frmEmail frm = new frmEmail();
-                frm.ShowDialog();
-
-                if (frm.EmailAdministrator)
-                {
-
-                    DataBaseOperations.TestSendingEmail(sqlConnection1, SystemTaskConstants.emailOperator);
-                    MessageBox.Show("Сообщение отправлено на почту");
-                }
-            }
-        }
-
+        
         private void frmMain_Load(object sender, EventArgs e)
         {
             frmSetAddress frm = new frmSetAddress();
@@ -243,7 +227,7 @@ namespace AutoCreateBackupPlan.Standart
                     rtbLog.AppendText("Настроен модуль почты\r\n");
 
                     btCreateNotify.Enabled = true;
-                    btSendEmail.Enabled = true;
+                    //btSendEmail.Enabled = true; //TODO: сделать модуль, который проверит все основные моменты
                     btInstall.Enabled = true;
 
                     MessageBox.Show("Необходимо перезапустить вручную SQL Agent! Иначе не будут работать уведомления по почте");

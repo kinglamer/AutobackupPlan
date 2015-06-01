@@ -13,6 +13,9 @@ namespace AutoCreateBackupPlan.Standart
             errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
         }
 
+        //TODO: написать сохранение последних введенных данных, чтобы не писать каждый раз заново
+
+
         private ErrorProvider errorProvider1 = new ErrorProvider();
 
         public bool ConnectReady { get; set; }
@@ -57,7 +60,7 @@ namespace AutoCreateBackupPlan.Standart
                 UserLogin = tbUser.Text;
                 UserPass = tbPass.Text;
 
-                ClassConstHelper.DB = tbOwner.Text + "_DB";
+                ClassConstHelper.DB = tbOwner.Text;
                 ClassConstHelper.serverSQL = tbServer.Text;
 
                 ConnectReady = true;
@@ -67,6 +70,11 @@ namespace AutoCreateBackupPlan.Standart
             {
                 MessageBox.Show("Необходимо заполнить все настройки");
             }
+        }
+
+        private void btTest_Click(object sender, EventArgs e)
+        {
+            //TODO: реализовать кнопку проверки соединения с БД и передалать место сохранения SQL Connect
         }
     }
 }
