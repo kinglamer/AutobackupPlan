@@ -36,7 +36,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
                 @account_name = '{4}',
                 @description = 'Аккаунт для отправки email сообщений',
                 @email_address = '{0}',
-                @display_name = 'БИТ.Отправка уведомлений',
+                @display_name = 'King.Отправка уведомлений',
                 @mailserver_name = '{1}',
                 @username = '{2}',
                 @password = '{3}';", mail, smtp, user, pass, ClassConstHelper.accountName);

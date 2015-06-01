@@ -38,7 +38,6 @@
             this.tbUser = new System.Windows.Forms.TextBox();
             this.tbOwner = new System.Windows.Forms.TextBox();
             this.tbPass = new System.Windows.Forms.TextBox();
-            this.btCheckEmail = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btConnect
@@ -129,22 +128,11 @@
             this.tbPass.TabIndex = 9;
             this.tbPass.Validating += new System.ComponentModel.CancelEventHandler(this.tbPass_Validating);
             // 
-            // btCheckEmail
-            // 
-            this.btCheckEmail.Location = new System.Drawing.Point(66, 199);
-            this.btCheckEmail.Name = "btCheckEmail";
-            this.btCheckEmail.Size = new System.Drawing.Size(209, 23);
-            this.btCheckEmail.TabIndex = 14;
-            this.btCheckEmail.Text = "Проверить email доступ на машине";
-            this.btCheckEmail.UseVisualStyleBackColor = true;
-            this.btCheckEmail.Click += new System.EventHandler(this.btCheckEmail_Click);
-            // 
             // frmSetAddress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(287, 234);
-            this.Controls.Add(this.btCheckEmail);
+            this.ClientSize = new System.Drawing.Size(287, 168);
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbOwner);
             this.Controls.Add(this.tbUser);
@@ -176,6 +164,5 @@
         private System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.TextBox tbOwner;
         private System.Windows.Forms.TextBox tbPass;
-        private System.Windows.Forms.Button btCheckEmail;
     }
 }

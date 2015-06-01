@@ -68,13 +68,5 @@ namespace AutoCreateBackupPlan.Standart
                 MessageBox.Show("Необходимо заполнить все настройки");
             }
         }
-
- 
-
-        private void btCheckEmail_Click(object sender, EventArgs e)
-        {
-            frmSystemEmailSend frm = new frmSystemEmailSend();
-            frm.ShowDialog();
-        }
     }
 }

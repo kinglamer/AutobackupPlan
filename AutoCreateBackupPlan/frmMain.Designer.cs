@@ -57,7 +57,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(351, 69);
+            this.ClientSize = new System.Drawing.Size(354, 58);
             this.Controls.Add(this.btStandart);
             this.Controls.Add(this.btExpress);
             this.MaximizeBox = false;

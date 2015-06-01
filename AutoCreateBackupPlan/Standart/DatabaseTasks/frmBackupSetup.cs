@@ -197,16 +197,5 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks
 
             return returnVal;
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            tbFull.Text = @"C:\King\backup\full\";
-            tbDiff.Text = @"C:\King\backup\diff\";
-            tbTran.Text = @"C:\King\backup\tran\";
-            tbMSDB.Text = @"C:\King\backup\msdb\";
-            tbMaster.Text = @"C:\King\backup\master\";
-            validDiff = validFull = validMSDB = validMaster = validTran = true;
-            btAdd_Click(sender, e);
-        }
     }
 }

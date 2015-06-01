@@ -15,8 +15,6 @@ namespace AutoCreateBackupPlan.Standart
         {
             try
             {
-
-
                 SqlCommand cmd = new SqlCommand();
 
                 cmd.CommandText = query;
@@ -63,21 +61,8 @@ namespace AutoCreateBackupPlan.Standart
 
         public static int ExecuteMySP(SqlConnection connection, Dictionary<string, string> dataVal, string spName)
         {
-            //Dictionary<string,string> parara = new Dictionary<string, string>();
-
-
-
-
-            //parara.Add("@configname", "show advanced");
-            //parara.Add("@configvalue", "1");
-            //int i = ExecuteMySP(sqlConnection1, parara, "sp_CONFIGURE");
-
-            // MessageBox.Show(i.ToString());
             try
             {
-
-
-
                 SqlCommand cmd = new SqlCommand();
                 SqlDataReader rdr = null;
                 cmd.CommandText = spName;
@@ -99,7 +84,6 @@ namespace AutoCreateBackupPlan.Standart
             }
 
             return 0;
-            // return cmd.ExecuteNonQuery();
         }
     }
 }

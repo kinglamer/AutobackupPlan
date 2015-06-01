@@ -38,7 +38,6 @@
             this.tbPass = new System.Windows.Forms.TextBox();
             this.btAdd = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.tbOperator = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -131,16 +130,6 @@
             this.btClose.UseVisualStyleBackColor = true;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 137);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "тестовые данные";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // tbOperator
             // 
             this.tbOperator.Location = new System.Drawing.Point(207, 111);
@@ -165,7 +154,6 @@
             this.ClientSize = new System.Drawing.Size(415, 167);
             this.Controls.Add(this.tbOperator);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btClose);
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.tbPass);
@@ -179,7 +167,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmProfile";
             this.Text = "Настройка профиля для отправки почты";
-           
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,7 +184,6 @@
         private System.Windows.Forms.TextBox tbPass;
         private System.Windows.Forms.Button btAdd;
         private System.Windows.Forms.Button btClose;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox tbOperator;
         private System.Windows.Forms.Label label5;
     }

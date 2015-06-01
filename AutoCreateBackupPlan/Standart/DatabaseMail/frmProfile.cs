@@ -39,14 +39,6 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
 
 
 
-        private void testMail()
-        {
-            email_address = "budaev@biz-it.ru";
-            mailserver_name = "mail.biz-it.ru";
-            username = "budaev";
-            password = "Ghfrnbr1";
-            email_operator = "budaev@biz-it.ru";
-        }
 
         private void btAdd_Click(object sender, EventArgs e)
         {
@@ -103,13 +95,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
             ValidatorDatabaseMail.ValidatingTextBox(sender as TextBox, out validPass, errorProvider1);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            testMail();
-            CreateMail = true;
-            Close();
-        }
-
+    
     
 
         private void tbOperator_Validating(object sender, CancelEventArgs e)

@@ -72,12 +72,6 @@
     <Compile Include="Standart\DatabaseMail\frmProfile.designer.cs">
       <DependentUpon>frmProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Standart\DatabaseMail\frmSendEmail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Standart\DatabaseMail\frmSendEmail.designer.cs">
-      <DependentUpon>frmSendEmail.cs</DependentUpon>
-    </Compile>
     <Compile Include="Standart\DatabaseMail\ValidatorDatabaseMail.cs" />
     <Compile Include="Standart\DatabaseTasks\BackupFolders.cs" />
     <Compile Include="Standart\DatabaseTasks\BackupSystemTasks\TaskBackupMaster.cs" />
@@ -116,12 +110,6 @@
     <Compile Include="Standart\frmSetAddress.designer.cs">
       <DependentUpon>frmSetAddress.cs</DependentUpon>
     </Compile>
-    <Compile Include="Standart\frmSystemEmailSend.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Standart\frmSystemEmailSend.designer.cs">
-      <DependentUpon>frmSystemEmailSend.cs</DependentUpon>
-    </Compile>
     <Compile Include="Standart\SQLHelper.cs" />
     <EmbeddedResource Include="Express\frmExpress.resx">
       <DependentUpon>frmExpress.cs</DependentUpon>
@@ -141,9 +129,6 @@
     <EmbeddedResource Include="Standart\DatabaseMail\frmProfile.resx">
       <DependentUpon>frmProfile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Standart\DatabaseMail\frmSendEmail.resx">
-      <DependentUpon>frmSendEmail.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Standart\DatabaseTasks\frmBackupSetup.resx">
       <DependentUpon>frmBackupSetup.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,9 +140,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Standart\frmSetAddress.resx">
       <DependentUpon>frmSetAddress.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Standart\frmSystemEmailSend.resx">
-      <DependentUpon>frmSystemEmailSend.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
