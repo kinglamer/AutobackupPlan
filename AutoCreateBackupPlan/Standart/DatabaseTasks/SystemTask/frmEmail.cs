@@ -56,12 +56,5 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask
 
             ValidatorDatabaseMail.AnalyValid(tbEmail, validMail, errorMsg, errorProvider1);
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            SystemTaskConstants.emailOperator = "budaev@biz-it.ru";
-            EmailAdministrator = true;
-            Close();
-        }
     }
 }

@@ -46,7 +46,7 @@
             this.btConnect.Location = new System.Drawing.Point(127, 121);
             this.btConnect.Name = "btConnect";
             this.btConnect.Size = new System.Drawing.Size(78, 23);
-            this.btConnect.TabIndex = 10;
+            this.btConnect.TabIndex = 11;
             this.btConnect.Text = "Соединение";
             this.btConnect.UseVisualStyleBackColor = true;
             this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
@@ -56,7 +56,7 @@
             this.btClose.Location = new System.Drawing.Point(211, 121);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(75, 23);
-            this.btClose.TabIndex = 1;
+            this.btClose.TabIndex = 12;
             this.btClose.Text = "Выход";
             this.btClose.UseVisualStyleBackColor = true;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
@@ -102,7 +102,7 @@
             this.tbServer.Location = new System.Drawing.Point(137, 18);
             this.tbServer.Name = "tbServer";
             this.tbServer.Size = new System.Drawing.Size(119, 20);
-            this.tbServer.TabIndex = 6;
+            this.tbServer.TabIndex = 1;
             this.tbServer.Validating += new System.ComponentModel.CancelEventHandler(this.tbServer_Validating);
             // 
             // tbUser
@@ -110,7 +110,7 @@
             this.tbUser.Location = new System.Drawing.Point(137, 44);
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(119, 20);
-            this.tbUser.TabIndex = 8;
+            this.tbUser.TabIndex = 2;
             this.tbUser.Validating += new System.ComponentModel.CancelEventHandler(this.tbUser_Validating);
             // 
             // tbOwner
@@ -118,15 +118,16 @@
             this.tbOwner.Location = new System.Drawing.Point(137, 96);
             this.tbOwner.Name = "tbOwner";
             this.tbOwner.Size = new System.Drawing.Size(119, 20);
-            this.tbOwner.TabIndex = 7;
+            this.tbOwner.TabIndex = 4;
             this.tbOwner.Validating += new System.ComponentModel.CancelEventHandler(this.tbOwner_Validating);
             // 
             // tbPass
             // 
             this.tbPass.Location = new System.Drawing.Point(137, 70);
             this.tbPass.Name = "tbPass";
+            this.tbPass.PasswordChar = '*';
             this.tbPass.Size = new System.Drawing.Size(119, 20);
-            this.tbPass.TabIndex = 9;
+            this.tbPass.TabIndex = 3;
             this.tbPass.Validating += new System.ComponentModel.CancelEventHandler(this.tbPass_Validating);
             // 
             // btTest
@@ -134,7 +135,7 @@
             this.btTest.Location = new System.Drawing.Point(12, 121);
             this.btTest.Name = "btTest";
             this.btTest.Size = new System.Drawing.Size(78, 23);
-            this.btTest.TabIndex = 11;
+            this.btTest.TabIndex = 9;
             this.btTest.Text = "Проверить";
             this.btTest.UseVisualStyleBackColor = true;
             this.btTest.Click += new System.EventHandler(this.btTest_Click);

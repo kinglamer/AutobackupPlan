@@ -106,6 +106,7 @@
             // 
             this.tbPass.Location = new System.Drawing.Point(207, 85);
             this.tbPass.Name = "tbPass";
+            this.tbPass.PasswordChar = '*';
             this.tbPass.Size = new System.Drawing.Size(183, 20);
             this.tbPass.TabIndex = 7;
             this.tbPass.Validating += new System.ComponentModel.CancelEventHandler(this.tbPass_Validating);
@@ -143,9 +144,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(57, 114);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(143, 13);
+            this.label5.Size = new System.Drawing.Size(140, 13);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Почтовый ящик оператора";
+            this.label5.Text = "Имя оператора в системе";
             // 
             // frmProfile
             // 
