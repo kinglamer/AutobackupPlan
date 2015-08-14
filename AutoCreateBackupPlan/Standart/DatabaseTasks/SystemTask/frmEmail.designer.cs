@@ -49,7 +49,7 @@
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(75, 23);
             this.btSave.TabIndex = 1;
-            this.btSave.Text = "Сохранить";
+            this.btSave.Text = "Настроить";
             this.btSave.UseVisualStyleBackColor = true;
             this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 

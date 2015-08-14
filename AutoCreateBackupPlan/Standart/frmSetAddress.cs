@@ -90,9 +90,5 @@ namespace AutoCreateBackupPlan.Standart
             }
         }
 
-        private void btTest_Click(object sender, EventArgs e)
-        {
-            //TODO: реализовать кнопку проверки соединения с БД и передалать место сохранения SQL Connect
-        }
     }
 }

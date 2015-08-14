@@ -38,7 +38,6 @@
             this.tbUser = new System.Windows.Forms.TextBox();
             this.tbOwner = new System.Windows.Forms.TextBox();
             this.tbPass = new System.Windows.Forms.TextBox();
-            this.btTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btConnect
@@ -130,22 +129,11 @@
             this.tbPass.TabIndex = 3;
             this.tbPass.Validating += new System.ComponentModel.CancelEventHandler(this.tbPass_Validating);
             // 
-            // btTest
-            // 
-            this.btTest.Location = new System.Drawing.Point(12, 121);
-            this.btTest.Name = "btTest";
-            this.btTest.Size = new System.Drawing.Size(78, 23);
-            this.btTest.TabIndex = 9;
-            this.btTest.Text = "Проверить";
-            this.btTest.UseVisualStyleBackColor = true;
-            this.btTest.Click += new System.EventHandler(this.btTest_Click);
-            // 
             // frmSetAddress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 156);
-            this.Controls.Add(this.btTest);
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbOwner);
             this.Controls.Add(this.tbUser);
@@ -177,6 +165,5 @@
         private System.Windows.Forms.TextBox tbUser;
         private System.Windows.Forms.TextBox tbOwner;
         private System.Windows.Forms.TextBox tbPass;
-        private System.Windows.Forms.Button btTest;
     }
 }

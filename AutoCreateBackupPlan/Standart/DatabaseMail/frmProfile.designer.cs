@@ -117,7 +117,7 @@
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(75, 23);
             this.btAdd.TabIndex = 8;
-            this.btAdd.Text = "Сохранить";
+            this.btAdd.Text = "Настроить";
             this.btAdd.UseVisualStyleBackColor = true;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
