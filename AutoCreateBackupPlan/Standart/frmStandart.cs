@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Mail;
+using AutoCreateBackupPlan.Properties;
 using AutoCreateBackupPlan.Standart.DatabaseMail;
 using AutoCreateBackupPlan.Standart.DatabaseTasks;
 using AutoCreateBackupPlan.Standart.DatabaseTasks.BackupSystemTasks;
@@ -45,7 +46,8 @@ namespace AutoCreateBackupPlan.Standart
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show("Ошибка при установки связи. Информация: " + ex.Message);
+                    MessageBox.Show(ex.Message);
+                    frmMain_Load(this, e);
                 }
             }
             else

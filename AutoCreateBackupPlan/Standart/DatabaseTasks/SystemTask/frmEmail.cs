@@ -1,4 +1,5 @@
-﻿using AutoCreateBackupPlan.Standart.DatabaseMail;
+﻿using AutoCreateBackupPlan.Common;
+using AutoCreateBackupPlan.Standart.DatabaseMail;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -9,7 +10,8 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask
     {
 
         private ErrorProvider errorProvider1 = new ErrorProvider();
-
+           
+        private UserData ud;
         public bool EmailAdministrator { get; set; }
         private bool validMail;
 
@@ -17,12 +19,12 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask
         {
             InitializeComponent();
             errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-
             
-            if (SystemTaskConstants.emailOperator.Length > 0)
+            
+            ud = UserData.Load(ClassConstHelper.fileConfigsStandart);
+            if (ud.userEmailData != null)
             {
-                tbEmail.Text = SystemTaskConstants.emailOperator;
-                validMail = true;
+                tbEmail.Text = ud.userEmailData.AdminEmail;
             }
 
         }
@@ -38,6 +40,10 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask
             if (validMail)
             {
                 SystemTaskConstants.emailOperator = tbEmail.Text;
+
+
+                ud.SetEmailData(new UserEmailData(tbEmail.Text, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty));
+                ud.Save(ClassConstHelper.fileConfigsStandart);
 
                 EmailAdministrator = true;
                 Close();

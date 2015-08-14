@@ -1,4 +1,6 @@
-﻿using AutoCreateBackupPlan.Standart.DatabaseMail;
+﻿using AutoCreateBackupPlan.Common;
+using AutoCreateBackupPlan.Properties;
+using AutoCreateBackupPlan.Standart.DatabaseMail;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -7,14 +9,22 @@ namespace AutoCreateBackupPlan.Standart
 {
     public partial class frmSetAddress : Form
     {
+        private UserData ud;
         public frmSetAddress()
         {
             InitializeComponent();
             errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+
+            
+            ud = UserData.Load(ClassConstHelper.fileConfigsStandart);
+            if (ud != null)
+            {
+                tbOwner.Text = ud.DbName;
+                tbPass.Text = ud.Pass;
+                tbServer.Text = ud.Server;
+                tbUser.Text = ud.User;
+            }
         }
-
-        //TODO: написать сохранение последних введенных данных, чтобы не писать каждый раз заново
-
 
         private ErrorProvider errorProvider1 = new ErrorProvider();
 
@@ -55,6 +65,11 @@ namespace AutoCreateBackupPlan.Standart
 
         private void btConnect_Click(object sender, EventArgs e)
         {
+            ValidatorDatabaseMail.ValidatingTextBox(tbServer, out validServer, errorProvider1);
+            ValidatorDatabaseMail.ValidatingTextBox(tbOwner, out validOwner, errorProvider1);
+            ValidatorDatabaseMail.ValidatingTextBox(tbUser, out validUser, errorProvider1);
+            ValidatorDatabaseMail.ValidatingTextBox(tbPass, out validPass, errorProvider1);
+
             if (validOwner && validPass && validServer && validUser)
             {
                 UserLogin = tbUser.Text;
@@ -63,12 +78,15 @@ namespace AutoCreateBackupPlan.Standart
                 ClassConstHelper.DB = tbOwner.Text;
                 ClassConstHelper.serverSQL = tbServer.Text;
 
+                ud.SetDatabase(tbOwner.Text, tbPass.Text, tbServer.Text, tbUser.Text);
+                ud.Save(ClassConstHelper.fileConfigsStandart);
+
                 ConnectReady = true;
                 Close();
             }
             else
             {
-                MessageBox.Show("Необходимо заполнить все настройки");
+                MessageBox.Show(Resources.Msg_ErrorValidFields);
             }
         }
 

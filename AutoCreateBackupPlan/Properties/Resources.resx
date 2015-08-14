@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -114,4 +117,305 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Msg_ErrorCreateFolder" xml:space="preserve">
+    <value>Слишком большая длинна пути до папки сохранения. Измените путь: 
+</value>
+  </data>
+  <data name="Msg_CatalogNotExist" xml:space="preserve">
+    <value>Отсутствует каталог</value>
+  </data>
+  <data name="Msg_Create" xml:space="preserve">
+    <value>Создал</value>
+  </data>
+  <data name="OperationCancel" xml:space="preserve">
+    <value>Операция отменена</value>
+  </data>
+  <data name="Msg_Error" xml:space="preserve">
+    <value>Ошибка </value>
+  </data>
+  <data name="Msg_ErrorCheckExistFolders" xml:space="preserve">
+    <value>Проблема при проверке наличия папок. Операция прервана</value>
+  </data>
+  <data name="Msg_ErrorFillAllFields" xml:space="preserve">
+    <value>Все поля должны быть заполнены</value>
+  </data>
+  <data name="Msg_Ready" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="QueryStandart_AddAccountToProfileDatabaseMail" xml:space="preserve">
+    <value>EXECUTE
+            msdb.dbo.sysmail_add_profileaccount_sp
+                @profile_name = '{0}',
+                @account_name = '{1}',
+                @sequence_number = 1;</value>
+  </data>
+  <data name="BackupExpressBatCommand" xml:space="preserve">
+    <value>sqlcmd -S {0} -U {1} -P {2} -i {3}backup_full.sql</value>
+  </data>
+  <data name="Msg_CatalogAlredyExist" xml:space="preserve">
+    <value>В директории {0} уже создан bat файл. Укажите другой каталог.</value>
+  </data>
+  <data name="Msg_CatalotNotExistCreate" xml:space="preserve">
+    <value>Каталог {0} не существует. Вы хотите его создать?</value>
+  </data>
+  <data name="QueryStandart_ConfigDatabaseMail" xml:space="preserve">
+    <value>USE master;
+                exec sp_CONFIGURE 'show advanced', 1;                
+                RECONFIGURE;                
+                exec sp_CONFIGURE 'Database Mail XPs', 1;                
+                RECONFIGURE;</value>
+  </data>
+  <data name="QueryStandart_CreateAccountDatabaseMail" xml:space="preserve">
+    <value>EXECUTE
+            msdb.dbo.sysmail_add_account_sp
+                @account_name = '{4}',
+                @description = 'Аккаунт для отправки email сообщений',
+                @email_address = '{0}',
+                @display_name = 'King.Отправка уведомлений',
+                @mailserver_name = '{1}',
+                @username = '{2}',
+                @password = '{3}';</value>
+  </data>
+  <data name="QueryStandart_CreateOperator" xml:space="preserve">
+    <value>USE msdb;        
+                                    EXEC msdb.dbo.sp_add_operator @name='{1}', 
+		                            @enabled=1, 
+		                            @pager_days=0, 
+		                            @email_address='{0}'</value>
+  </data>
+  <data name="QueryStandart_CreateProfileDatabaseMail" xml:space="preserve">
+    <value>EXECUTE msdb.dbo.sysmail_add_profile_sp
+                   @profile_name = '{0}',
+                   @description = 'Профиль для уведомления о событиях связанных с базой данных';</value>
+  </data>
+  <data name="QueryStandart_EnableEmailSQLAgent" xml:space="preserve">
+    <value>USE msdb;
+            EXEC master.dbo.xp_instance_regwrite 
+            'HKEY_LOCAL_MACHINE',
+            'SOFTWARE\Microsoft\MSSQLServer\SQLServerAgent', 
+            'DatabaseMailProfile', 
+            'REG_SZ', '{0}'</value>
+  </data>
+  <data name="Msg_ErrorEmail" xml:space="preserve">
+    <value>Требуется введенный e-mail адрес</value>
+  </data>
+  <data name="Msg_ErrorEmailFormat" xml:space="preserve">
+    <value>e-mail адрес должен иметь правильный формат.\n Например 'someone@example.com'</value>
+  </data>
+  <data name="Msg_ErrorFieldMustBeNotEmpty" xml:space="preserve">
+    <value>Поле не должно быть пустым</value>
+  </data>
+  <data name="Msg_ErrorSmtp" xml:space="preserve">
+    <value>Требуется введенный адрес smtp сервера</value>
+  </data>
+  <data name="Msg_ErrorSmtpCompare" xml:space="preserve">
+    <value>Домен почтового ящика и smtp сервера не совпадает</value>
+  </data>
+  <data name="QueryExpress_FullBackupExpress" xml:space="preserve">
+    <value>declare @pathBackup as varchar(255),
+            @nameFile as varchar(40),
+            @backupSetId as int
+
+            set @nameFile = 'KING_FULL_' + REPLACE(REPLACE(convert(varchar,GETDATE(), 126),':','_') ,'.','_')
+            set @pathBackup =  '{1}' + @nameFile + '.bak'
+
+
+            BACKUP DATABASE {0} TO  DISK = @pathBackup
+            WITH NOFORMAT, NOINIT, NAME = 'Разностная копия базs {0}', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
+
+
+
+            select @backupSetId = position from msdb..backupset where database_name='{0}'
+            and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name='{0}')
+            if @backupSetId is null 
+            begin 
+	            raiserror('Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.', 16, 1) 
+            end
+            RESTORE VERIFYONLY FROM  DISK = @pathBackup
+            WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND</value>
+  </data>
+  <data name="QueryStandart_GetConfigsDatabaseMail" xml:space="preserve">
+    <value>RECONFIGURE;EXEC sp_configure;</value>
+  </data>
+  <data name="TestSendEmail" xml:space="preserve">
+    <value>USE msdb;             
+                EXECUTE sp_send_dbmail @profile_name = '{1}',
+                           @recipients = '{0}',
+                           @subject = 'Test message',
+                           @body = 'Тестовое сообщение с MS SQL Server отправлено успешно';</value>
+  </data>
+  <data name="Msg_ErrorValidFields" xml:space="preserve">
+    <value>Не все поля заполнены корректно</value>
+  </data>
+  <data name="Msg_DBMail_ConfigIsReady" xml:space="preserve">
+    <value>Системная таблица уже настроена</value>
+  </data>
+  <data name="Msg_DBMail_ConfigProgress" xml:space="preserve">
+    <value>Конфигурируем Database Mail</value>
+  </data>
+  <data name="Msg_DBMail_OperationExecuted" xml:space="preserve">
+    <value>Операция выполнена с кодом: </value>
+  </data>
+  <data name="Msg_DBMail_ProfileExist" xml:space="preserve">
+    <value>Профиль уже создан</value>
+  </data>
+  <data name="Msg_DBMail_DBMailProfileConfig" xml:space="preserve">
+    <value>Конфигурируем Database Mail Profile</value>
+  </data>
+  <data name="Msg_DBMail_ActivateProfile" xml:space="preserve">
+    <value>Активируем в SQL Agente профиль</value>
+  </data>
+  <data name="Msg_DBMail_AccounExist" xml:space="preserve">
+    <value>Аккаунт уже создан</value>
+  </data>
+  <data name="Msg_DBMail_AccountCreate" xml:space="preserve">
+    <value>Создаем Database Mail Account</value>
+  </data>
+  <data name="Msg_DBMail_AddAccountToDBmail" xml:space="preserve">
+    <value>Добавляем Account Database Mail к Profile</value>
+  </data>
+  <data name="Msg_DBMail_OperatorExist" xml:space="preserve">
+    <value>Оператор уже создан</value>
+  </data>
+  <data name="Msg_DBMail_OperatorCreate" xml:space="preserve">
+    <value>Создаем Database Mail Operator</value>
+  </data>
+  <data name="QueryStandart_JobBackupMaster" xml:space="preserve">
+    <value> declare @pathBackup as varchar(255),
+            @nameFile as varchar(40),
+            @backupSetId as int
+
+            set @nameFile = {2} + {3}
+            set @pathBackup =  ''{1}'' + @nameFile + ''.bak''
+
+
+            BACKUP DATABASE {0} TO  DISK = @pathBackup
+            WITH NOFORMAT, NOINIT, NAME = ''Копия базы {0}'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
+
+
+
+            select @backupSetId = position from msdb..backupset where database_name=''{0}'' 
+            and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=''{0}'')
+            if @backupSetId is null 
+            begin 
+	            raiserror(''Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.'', 16, 1) 
+            end
+            RESTORE VERIFYONLY FROM  DISK = @pathBackup
+            WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND</value>
+  </data>
+  <data name="QueryStandart_JobBackupMsdb" xml:space="preserve">
+    <value> declare @pathBackup as varchar(255),
+            @nameFile as varchar(40),
+            @backupSetId as int
+
+            set @nameFile = {2} + {3}
+            set @pathBackup =  ''{1}'' + @nameFile + ''.bak''
+
+
+            BACKUP DATABASE {0} TO  DISK = @pathBackup
+            WITH NOFORMAT, NOINIT, NAME = ''Копия базы {0}'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
+
+
+
+            select @backupSetId = position from msdb..backupset where database_name=''{0}'' 
+            and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=''{0}'')
+            if @backupSetId is null 
+            begin 
+	            raiserror(''Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.'', 16, 1) 
+            end
+            RESTORE VERIFYONLY FROM  DISK = @pathBackup
+            WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND</value>
+  </data>
+  <data name="QueryStandart_CheckExistBackup" xml:space="preserve">
+    <value>SELECT 
+                                s.backup_set_id,
+                                s.database_name,
+                                m.physical_device_name,
+                                CAST(CAST(s.backup_size / 1000000 AS INT) AS VARCHAR(14)) + ' ' + 'MB' AS bkSize,
+                                CAST(DATEDIFF(second, s.backup_start_date,
+                                s.backup_finish_date) AS VARCHAR(4)) + ' ' + 'Seconds' TimeTaken,
+                                s.backup_start_date,
+                                CAST(s.first_lsn AS VARCHAR(50)) AS first_lsn,
+                                CAST(s.last_lsn AS VARCHAR(50)) AS last_lsn,
+                                CASE s.[type]
+                                WHEN 'D' THEN 'Full'
+                                WHEN 'I' THEN 'Differential'
+                                WHEN 'L' THEN 'Transaction Log'
+                                END AS BackupType,
+                                s.server_name,
+                                s.recovery_model
+                                FROM msdb.dbo.backupset s
+                                INNER JOIN msdb.dbo.backupmediafamily m ON s.media_set_id = m.media_set_id
+                                WHERE s.database_name = '{0}' 
+                                and s.[type] like 'D'</value>
+  </data>
+  <data name="QueryStandart_JobBackupDiff" xml:space="preserve">
+    <value> declare @pathBackup as varchar(255),
+            @nameFile as varchar(40),
+            @backupSetId as int
+
+            set @nameFile = {2} + {3}
+            set @pathBackup =  ''{1}'' + @nameFile + ''.bak''
+
+
+            BACKUP DATABASE {0} TO  DISK = @pathBackup
+            WITH DIFFERENTIAL, NOINIT, NAME = ''Разностная копия базы {0}'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
+
+
+
+            select @backupSetId = position from msdb..backupset where database_name=''{0}'' 
+            and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=''{0}'')
+            if @backupSetId is null 
+            begin 
+	            raiserror(''Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.'', 16, 1) 
+            end
+            RESTORE VERIFYONLY FROM  DISK = @pathBackup
+            WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND</value>
+  </data>
+  <data name="QueryStandart_JobBackupFull" xml:space="preserve">
+    <value> declare @pathBackup as varchar(255),
+            @nameFile as varchar(40),
+            @backupSetId as int
+
+            set @nameFile = {2} + {3}
+            set @pathBackup =  ''{1}'' + @nameFile + ''.bak''
+
+
+            BACKUP DATABASE {0} TO  DISK = @pathBackup
+            WITH NOFORMAT, NOINIT, NAME = ''Разностная копия базs {0}'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
+
+
+
+            select @backupSetId = position from msdb..backupset where database_name=''{0}'' 
+            and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=''{0}'')
+            if @backupSetId is null 
+            begin 
+	            raiserror(''Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.'', 16, 1) 
+            end
+            RESTORE VERIFYONLY FROM  DISK = @pathBackup
+            WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND</value>
+  </data>
+  <data name="QueryStandart_JobbackupTran" xml:space="preserve">
+    <value>declare @pathBackup as varchar(255),
+@nameFile as varchar(40),
+@backupSetId as int
+
+set @nameFile = {2} + {3}
+set @pathBackup =  ''{1}'' + @nameFile + ''.bak''
+
+BACKUP LOG [{0}] TO DISK =@pathBackup
+WITH NOFORMAT, NOINIT, 
+NAME = N''Резервное копирование журнала транзакций {0}'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
+
+
+select @backupSetId = position from msdb..backupset where database_name=N''{0}'' 
+and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=N''{0}'' );
+
+if @backupSetId is null 
+begin 
+	raiserror(N''Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.'', 16, 1) 
+end
+RESTORE VERIFYONLY FROM 
+DISK = @pathBackup WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND;</value>
+  </data>
 </root>

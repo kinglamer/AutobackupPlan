@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using AutoCreateBackupPlan.Properties;
 
 namespace AutoCreateBackupPlan.Standart.DatabaseMail
 {
@@ -9,7 +10,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
             // Confirm that the e-mail address string is not empty. 
             if (emailAddress.Length == 0)
             {
-                errorMessage = "Требуется введенный e-mail адрес";
+                errorMessage = Resources.Msg_ErrorEmail;
                 return false;
             }
 
@@ -23,8 +24,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
                 }
             }
 
-            errorMessage = "e-mail адрес должен иметь правильный формат.\n" +
-                           "Например 'someone@example.com' ";
+            errorMessage = Resources.Msg_ErrorEmailFormat;
             return false;
         }
 
@@ -34,7 +34,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
 
             if (smtp.Length == 0)
             {
-                errorMessage = "Требуется введенный адрес smtp сервера";
+                errorMessage = Resources.Msg_ErrorSmtp;
                 return false;
             }
 
@@ -45,7 +45,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
 
                 if (!smtp.Contains(domen))
                 {
-                    errorMessage = "Домен почтового ящика и smtp сервера не совпадает";
+                    errorMessage = Resources.Msg_ErrorSmtpCompare;
                     return false;
                 }
             }
@@ -55,11 +55,11 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
 
         public static bool ValidSimpleString(string text, out string errorMessage)
         {
-            errorMessage = "";
+            errorMessage = Resources.Msg_ErrorFieldMustBeNotEmpty;
 
             if (text.Length == 0)
             {
-                errorMessage = "Поле не должно быть пустым";
+                errorMessage = "";
                 return false;
             }
 
@@ -70,11 +70,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
         {
             if (!validVal)
             {
-                // Cancel the event and select the text to be corrected by the user.
-                //    e.Cancel = true;
                 textBox.Select(0, textBox.Text.Length);
-
-                // Set the ErrorProvider error with the text to display.  
                 errorProvider.SetError(textBox, errorMsg);
             }
             else

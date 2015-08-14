@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using AutoCreateBackupPlan.Properties;
 using log4net;
 
 namespace AutoCreateBackupPlan.Standart.DatabaseMail
@@ -13,25 +14,25 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
         /// </summary>
         public static void SetDatabaseMailConfig(SqlConnection connection)
         {
-            using (SqlDataReader reader = SQLHelper.GetDataReader(connection, DatabaseMailQuerys.GetConfigs()))
+            using (SqlDataReader reader = SQLHelper.GetDataReader(connection, Resources.QueryStandart_GetConfigsDatabaseMail))
             {
                 if (reader != null && reader.HasRows)
                 {
                     if (CheckReconfigDatabase(reader, "Database Mail XPs"))
                     {
-                        log.Debug("Системная таблица уже настроена");
+                        log.Debug(Resources.Msg_DBMail_ConfigIsReady);
                         return;
                     }
                 }
                 else
                 {
-                    log.Debug("Конфигурируем Database Mail");
+                    log.Debug(Resources.Msg_DBMail_ConfigProgress);
                 }
             }
 
-            int code = SQLHelper.ExecuteMyQuery(connection, DatabaseMailQuerys.ConfigDatabaseMail());
+            int code = SQLHelper.ExecuteMyQuery(connection, Resources.QueryStandart_ConfigDatabaseMail);
 
-            log.Debug("Операция выполнена с кодом: " + code);
+            log.Debug(Resources.Msg_DBMail_OperationExecuted + code);
           
 
             
@@ -68,21 +69,21 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
             {
                 if (reader != null && reader.HasRows)
                 {
-                    log.Debug("Профиль уже создан");
+                    log.Debug(Resources.Msg_DBMail_ProfileExist);
                 }
                 else
                 {
-                    log.Debug("Конфигурируем Database Mail Profile");
+                    log.Debug(Resources.Msg_DBMail_DBMailProfileConfig);
 
-                    int code = SQLHelper.ExecuteMyQuery(connection, DatabaseMailQuerys.CreateProfileDatabaseMail());
+                    int code = SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_CreateProfileDatabaseMail, ClassConstHelper.profileName));
 
-                    log.Debug("Операция выполнена с кодом: " + code);
+                    log.Debug(Resources.Msg_DBMail_OperationExecuted + code);
 
-                    log.Debug("Активируем в SQL Agente профиль");
+                    log.Debug(Resources.Msg_DBMail_ActivateProfile);
 
-                    code = SQLHelper.ExecuteMyQuery(connection, DatabaseMailQuerys.EnableEmailSQLAgent());
+                    code = SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_EnableEmailSQLAgent, ClassConstHelper.profileName));
 
-                    log.Debug("Операция выполнена с кодом: " + code);
+                    log.Debug(Resources.Msg_DBMail_OperationExecuted + code);
                 }
                     
             }
@@ -94,23 +95,23 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
             {
                 if (reader != null && reader.HasRows)
                 {
-                    log.Debug("Аккаунт уже создан");
+                    log.Debug(Resources.Msg_DBMail_AccounExist);
                 }
                 else
                 {
 
-                    log.Debug("Создаем Database Mail Account");
+                    log.Debug(Resources.Msg_DBMail_AccountCreate);
 
-                    int code =  SQLHelper.ExecuteMyQuery(connection,
-                                             DatabaseMailQuerys.CreateAccountDatabaseMail(mail, smtp, user, pass));
+                    int code =  SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_CreateProfileDatabaseMail, mail, smtp, user, pass, ClassConstHelper.accountName));
 
-                    log.Debug("Операция выполнена с кодом: " + code);
+                    log.Debug(Resources.Msg_DBMail_OperationExecuted + code);
 
-                    log.Debug("Добавляем Account Database Mail к Profile");
+                    log.Debug(Resources.Msg_DBMail_AddAccountToDBmail);
 
-                    code =  SQLHelper.ExecuteMyQuery(connection, DatabaseMailQuerys.AddAccountToProfileDatabaseMail());
+                    code = SQLHelper.ExecuteMyQuery(connection, 
+                        string.Format(Resources.QueryStandart_AddAccountToProfileDatabaseMail, ClassConstHelper.profileName, ClassConstHelper.accountName));
 
-                    log.Debug("Операция выполнена с кодом: " + code);
+                    log.Debug(Resources.Msg_DBMail_OperationExecuted + code);
                 }
             }
 
@@ -121,15 +122,15 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
             {
                 if (reader != null &&  reader.HasRows)
                 {
-                    log.Debug("Оператор уже создан");
+                    log.Debug(Resources.Msg_DBMail_OperatorExist);
                 }
                 else
                 {
-                    log.Debug("Создаем Database Mail Operator");
+                    log.Debug(Resources.Msg_DBMail_OperatorCreate);
 
-                    int code = SQLHelper.ExecuteMyQuery(connection, DatabaseMailQuerys.CreateOperator(emailOperator));
+                    int code = SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_CreateOperator, emailOperator, ClassConstHelper.emailOperatorName));
 
-                    log.Debug("Операция выполнена с кодом: " + code);
+                    log.Debug(Resources.Msg_DBMail_OperationExecuted + code);
                 }
             }
 
@@ -142,7 +143,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
         /// </summary>
         public static void TestSendingEmail(SqlConnection connection, string emailAddress)
         {
-            SQLHelper.ExecuteMyQuery(connection, DatabaseMailQuerys.TestSendEmail(emailAddress));
+            SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.TestSendEmail, emailAddress,ClassConstHelper.profileName));
         }
 
    

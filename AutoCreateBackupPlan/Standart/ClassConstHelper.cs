@@ -31,6 +31,8 @@ namespace AutoCreateBackupPlan.Standart
         public static string DB { get; set; }
         public static string serverSQL { get; set; }
 
-       
+        public static readonly string fileConfigsStandart = "dbStandart";
+
+
     }
 }

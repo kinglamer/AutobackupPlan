@@ -1,4 +1,6 @@
-﻿using AutoCreateBackupPlan.Standart.DatabaseMail;
+﻿using System.Collections.Generic;
+using AutoCreateBackupPlan.Common;
+using AutoCreateBackupPlan.Standart.DatabaseMail;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -18,6 +20,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks
         private bool validDiff;
         private bool validFull;
         private bool validMSDB;
+        private UserData ud;
 
         public frmBackupSetup()
         {
@@ -30,6 +33,18 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks
             dialog.Description = "Укажите путь до папки хранения копий";
             dialog.ShowNewFolderButton = true;
             dialog.RootFolder = Environment.SpecialFolder.MyComputer;
+
+            ud = UserData.Load(ClassConstHelper.fileConfigsStandart);
+            if (ud.Paths != null)
+            {
+                tbMaster.Text = ud.Paths["masterPath"];
+                tbMSDB.Text = ud.Paths["msdbPath"];
+                tbDiff.Text = ud.Paths["diffPath"];
+                tbTran.Text = ud.Paths["trarPath"];
+                tbFull.Text = ud.Paths["fullPath"];
+
+                validDiff = validFull = validMSDB = validMaster = validTran = true;
+            }
         }
 
         private void btClose_Click(object sender, EventArgs e)
@@ -54,7 +69,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Ошибка:" + exc.Message);
+                MessageBox.Show(exc.Message);
             }
 
             return string.Empty;
@@ -126,7 +141,15 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks
 
                 if (SetupPath(tbMSDB.Text, ref BackupFolders.pathMSDB)) return;
 
-                
+                Dictionary<string,string> paths = new Dictionary<string, string>();
+                paths.Add("masterPath",tbMaster.Text);
+                paths.Add("msdbPath",tbMSDB.Text);
+                paths.Add("diffPath",tbDiff.Text);
+                paths.Add("trarPath",tbTran.Text);
+                paths.Add("fullPath",tbFull.Text);
+
+                ud.SetPaths(paths);
+                ud.Save(ClassConstHelper.fileConfigsStandart);
 
                 ConfigureTask = true;
                 Close();

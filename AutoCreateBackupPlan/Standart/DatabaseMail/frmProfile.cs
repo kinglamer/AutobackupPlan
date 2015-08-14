@@ -6,16 +6,30 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using AutoCreateBackupPlan.Common;
+using AutoCreateBackupPlan.Properties;
 
 namespace AutoCreateBackupPlan.Standart.DatabaseMail
 {
     public partial class frmProfile : Form
     {
+        private UserData ud;
         public frmProfile()
         {
             InitializeComponent();
             errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-          
+
+            ud = UserData.Load(ClassConstHelper.fileConfigsStandart);
+            if (ud.userEmailData != null)
+            {
+                tbEmail.Text = ud.userEmailData.SendEmail;
+                tbSMTP.Text = ud.userEmailData.SmtpServer;
+                tbUser.Text = ud.userEmailData.EmailUser;
+                tbPass.Text = ud.userEmailData.EmailPassword;
+                tbOperator.Text = ud.userEmailData.OperatorName;
+
+                validEmail = validSmtp = validUser = validPass = validEmailOperator = true;
+            }
 
         }
 
@@ -50,12 +64,16 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
                 password = tbPass.Text;
                 email_operator = tbOperator.Text;
 
+
+                ud.SetEmailData(new UserEmailData("", tbEmail.Text, tbSMTP.Text, tbUser.Text, tbPass.Text, tbOperator.Text));
+                ud.Save(ClassConstHelper.fileConfigsStandart);
+
                 CreateMail = true;
                 Close();
             }
             else
             {
-                MessageBox.Show("Не все поля заполнены корректно");
+                MessageBox.Show(Resources.Msg_ErrorValidFields);
             }
         }
 
@@ -76,12 +94,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
 
         private void tbSMTP_Validating(object sender, CancelEventArgs e)
         {
-            string errorMsg;
-
-            validSmtp = ValidatorDatabaseMail.ValidSMTPAddress(tbSMTP.Text, tbEmail.Text, out errorMsg);
-
-            ValidatorDatabaseMail.AnalyValid(tbSMTP, validSmtp, errorMsg, errorProvider1);
-
+            ValidatorDatabaseMail.ValidatingTextBox(sender as TextBox, out validSmtp, errorProvider1);
         }
 
         private void tbUser_Validating(object sender, CancelEventArgs e)
