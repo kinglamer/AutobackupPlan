@@ -237,7 +237,7 @@
   <data name="QueryStandart_GetConfigsDatabaseMail" xml:space="preserve">
     <value>RECONFIGURE;EXEC sp_configure;</value>
   </data>
-  <data name="TestSendEmail" xml:space="preserve">
+  <data name="QueryStandart_TestSendEmail" xml:space="preserve">
     <value>USE msdb;             
                 EXECUTE sp_send_dbmail @profile_name = '{1}',
                            @recipients = '{0}',

@@ -18,11 +18,9 @@ namespace AutoCreateBackupPlan.Standart
 
     public class ClassConstHelper
     {
-       
-
 
         /// <summary>
-        /// Имена создаваемых реземерных копий баз данных 
+        /// Имена создаваемых реземерных копий баз данных. Не стал выносить в ресурсы
         /// </summary>
         public static readonly string masterdb_name = "''MASTER_''";
         public static readonly string msdb_name = "''MSDB_''";

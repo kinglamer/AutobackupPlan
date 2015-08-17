@@ -1149,6 +1149,19 @@ namespace AutoCreateBackupPlan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to USE msdb;             
+        ///                EXECUTE sp_send_dbmail @profile_name = &apos;{1}&apos;,
+        ///                           @recipients = &apos;{0}&apos;,
+        ///                           @subject = &apos;Test message&apos;,
+        ///                           @body = &apos;Тестовое сообщение с MS SQL Server отправлено успешно&apos;;.
+        /// </summary>
+        internal static string QueryStandart_TestSendEmail {
+            get {
+                return ResourceManager.GetString("QueryStandart_TestSendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to REPLACE(REPLACE(convert(varchar,GETDATE(), 126),&apos;&apos;:&apos;&apos;,&apos;&apos;_&apos;&apos;) ,&apos;&apos;.&apos;&apos;,&apos;&apos;_&apos;&apos;).
         /// </summary>
         internal static string QueryStandart_TimeStamp {
@@ -1178,19 +1191,6 @@ namespace AutoCreateBackupPlan.Properties {
         internal static string QueryStandart_UpdateJob {
             get {
                 return ResourceManager.GetString("QueryStandart_UpdateJob", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to USE msdb;             
-        ///                EXECUTE sp_send_dbmail @profile_name = &apos;{1}&apos;,
-        ///                           @recipients = &apos;{0}&apos;,
-        ///                           @subject = &apos;Test message&apos;,
-        ///                           @body = &apos;Тестовое сообщение с MS SQL Server отправлено успешно&apos;;.
-        /// </summary>
-        internal static string QueryStandart_TestSendEmail {
-            get {
-                return ResourceManager.GetString("TestSendEmail", resourceCulture);
             }
         }
     }
