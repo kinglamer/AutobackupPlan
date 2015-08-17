@@ -70,6 +70,16 @@ namespace AutoCreateBackupPlan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Все задачи резервного копирования системных баз настроены!
+        ///.
+        /// </summary>
+        internal static string Msg_BackupSystemDBReady {
+            get {
+                return ResourceManager.GetString("Msg_BackupSystemDBReady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to В директории {0} уже создан bat файл. Укажите другой каталог..
         /// </summary>
         internal static string Msg_CatalogAlredyExist {
@@ -93,6 +103,16 @@ namespace AutoCreateBackupPlan.Properties {
         internal static string Msg_CatalotNotExistCreate {
             get {
                 return ResourceManager.GetString("Msg_CatalotNotExistCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Настроен модуль почты
+        ///.
+        /// </summary>
+        internal static string Msg_ConfigDBMail {
+            get {
+                return ResourceManager.GetString("Msg_ConfigDBMail", resourceCulture);
             }
         }
         
@@ -205,6 +225,26 @@ namespace AutoCreateBackupPlan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Удалены настройки DatabaseMail
+        ///.
+        /// </summary>
+        internal static string Msg_Delete_ConfigDBMail {
+            get {
+                return ResourceManager.GetString("Msg_Delete_ConfigDBMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Все созданные ранее задачи удалены
+        ///.
+        /// </summary>
+        internal static string Msg_DeletedJobs {
+            get {
+                return ResourceManager.GetString("Msg_DeletedJobs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ошибка .
         /// </summary>
         internal static string Msg_Error {
@@ -269,6 +309,25 @@ namespace AutoCreateBackupPlan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to При выполнение возникла ошибка. См. файл логов.
+        /// </summary>
+        internal static string Msg_ErrorLookLogs {
+            get {
+                return ResourceManager.GetString("Msg_ErrorLookLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ошибка на этапе выполнения команды: {0} 
+        ///Сведения: {1}.
+        /// </summary>
+        internal static string Msg_ErrorOnStage {
+            get {
+                return ResourceManager.GetString("Msg_ErrorOnStage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Требуется введенный адрес smtp сервера.
         /// </summary>
         internal static string Msg_ErrorSmtp {
@@ -296,11 +355,329 @@ namespace AutoCreateBackupPlan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Настроен задачи резервного копирования БД
+        ///.
+        /// </summary>
+        internal static string Msg_JobBackupReady {
+            get {
+                return ResourceManager.GetString("Msg_JobBackupReady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Задача {0} уже создана в базе данных.
+        /// </summary>
+        internal static string Msg_JobExist {
+            get {
+                return ResourceManager.GetString("Msg_JobExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Для указаной вами базы данных еще не выполнялось резервное копирование данных. 
+        ///Необходимо выполнить его в ручную, чтобы начали формировать резервные копии журналов транзакций.
+        /// </summary>
+        internal static string Msg_NeedManualBackup {
+            get {
+                return ResourceManager.GetString("Msg_NeedManualBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Необходимо перезапустить вручную SQL Agent! Иначе не будут работать уведомления по почте.
+        /// </summary>
+        internal static string Msg_NeedRebootAgent {
+            get {
+                return ResourceManager.GetString("Msg_NeedRebootAgent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не настроен DatabaseMail.
+        /// </summary>
+        internal static string Msg_NotConfiguretedDBMail {
+            get {
+                return ResourceManager.GetString("Msg_NotConfiguretedDBMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не настроена почта администраора btCreateNotify_Click.
+        /// </summary>
+        internal static string Msg_NotExistEmailAdmin {
+            get {
+                return ResourceManager.GetString("Msg_NotExistEmailAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to King.Account.
+        /// </summary>
+        internal static string Msg_Query_Account {
+            get {
+                return ResourceManager.GetString("Msg_Query_Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выполнение DBCC CHECKDB.
+        /// </summary>
+        internal static string Msg_Query_CheckDB {
+            get {
+                return ResourceManager.GetString("Msg_Query_CheckDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Копия.
+        /// </summary>
+        internal static string Msg_Query_Copy {
+            get {
+                return ResourceManager.GetString("Msg_Query_Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаление разностных копий.
+        /// </summary>
+        internal static string Msg_Query_DeleteDiff {
+            get {
+                return ResourceManager.GetString("Msg_Query_DeleteDiff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаление старых копий.
+        /// </summary>
+        internal static string Msg_Query_DeleteOldCopy {
+            get {
+                return ResourceManager.GetString("Msg_Query_DeleteOldCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаление журналов транзакций.
+        /// </summary>
+        internal static string Msg_Query_DeleteTransaction {
+            get {
+                return ResourceManager.GetString("Msg_Query_DeleteTransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Получение статистики файлов.
+        /// </summary>
+        internal static string Msg_Query_GetFileStat {
+            get {
+                return ResourceManager.GetString("Msg_Query_GetFileStat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to King.Operator.
+        /// </summary>
+        internal static string Msg_Query_OperatorName {
+            get {
+                return ResourceManager.GetString("Msg_Query_OperatorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to King.Backup.Different.
+        /// </summary>
+        internal static string Msg_Query_Part1_Diff {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part1_Diff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to King.Backup.Full.
+        /// </summary>
+        internal static string Msg_Query_Part1_Full {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part1_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to King.Backup.master.
+        /// </summary>
+        internal static string Msg_Query_Part1_Master {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part1_Master", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to King.Backup.msdb.
+        /// </summary>
+        internal static string Msg_Query_Part1_MSDB {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part1_MSDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to King.File.Statistics.
+        /// </summary>
+        internal static string Msg_Query_Part1_Staticstic {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part1_Staticstic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to King.DBCC.CHECKDB.
+        /// </summary>
+        internal static string Msg_Query_Part1_TaskCheckDB {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part1_TaskCheckDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to King.Backup.Transaction.
+        /// </summary>
+        internal static string Msg_Query_Part1_Transaction {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part1_Transaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создание разностной копии базы данных. С последующим удалением резервных копий журналов транзакций.
+        /// </summary>
+        internal static string Msg_Query_Part2_Diff {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part2_Diff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создание полной копии БД. С последующим удалением журналов транзакций и разностных копий..
+        /// </summary>
+        internal static string Msg_Query_Part2_Full {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part2_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Копия системной базы данных master.
+        /// </summary>
+        internal static string Msg_Query_Part2_Master {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part2_Master", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Копия системной базы данных msdb.
+        /// </summary>
+        internal static string Msg_Query_Part2_MSDB {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part2_MSDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Информация о том, как распределено место в файловых группах базы.
+        /// </summary>
+        internal static string Msg_Query_Part2_Staticstic {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part2_Staticstic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Проверка БД перед созданием полной копии базы.
+        /// </summary>
+        internal static string Msg_Query_Part2_TaskCheckDB {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part2_TaskCheckDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Копия журналов транзакций базы данных.
+        /// </summary>
+        internal static string Msg_Query_Part2_Transaction {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part2_Transaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Получение статистики.
+        /// </summary>
+        internal static string Msg_Query_Part3_Staticstic {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part3_Staticstic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Проверка.
+        /// </summary>
+        internal static string Msg_Query_Part3_TaskCheckDB {
+            get {
+                return ResourceManager.GetString("Msg_Query_Part3_TaskCheckDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to King.Profile.
+        /// </summary>
+        internal static string Msg_Query_Profile {
+            get {
+                return ResourceManager.GetString("Msg_Query_Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Расписание.
+        /// </summary>
+        internal static string Msg_Query_Sheduler {
+            get {
+                return ResourceManager.GetString("Msg_Query_Sheduler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сжатие логов транзакций.
+        /// </summary>
+        internal static string Msg_Query_ShrinkLogs {
+            get {
+                return ResourceManager.GetString("Msg_Query_ShrinkLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Готово.
         /// </summary>
         internal static string Msg_Ready {
             get {
                 return ResourceManager.GetString("Msg_Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Настроены задачи дополнительного анализа БД
+        ///.
+        /// </summary>
+        internal static string Msg_ReadyAddionalTask {
+            get {
+                return ResourceManager.GetString("Msg_ReadyAddionalTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Необходимо указать почту.
+        /// </summary>
+        internal static string Msg_RequiredEmial {
+            get {
+                return ResourceManager.GetString("Msg_RequiredEmial", resourceCulture);
             }
         }
         
@@ -349,6 +726,96 @@ namespace AutoCreateBackupPlan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  EXEC msdb.dbo.sp_send_dbmail
+        ///            @profile_name = &apos;&apos;{0}&apos;&apos;,
+        ///              @recipients = &apos;&apos;{1}&apos;&apos;,
+        ///              @subject = &apos;&apos;{2}&apos;&apos;,
+        ///              @body = @s,
+        ///              @body_format = &apos;&apos;HTML&apos;&apos;.
+        /// </summary>
+        internal static string QueryStandart_AddEmailNotify {
+            get {
+                return ResourceManager.GetString("QueryStandart_AddEmailNotify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USE [msdb];
+        ///
+        ///            EXEC  msdb.dbo.sp_add_job @job_name=&apos;{0}&apos;, 
+        ///		    @enabled=1, 
+        ///		    @notify_level_eventlog=0, 
+        ///		    @notify_level_email=2, 
+        ///		    @notify_level_netsend=2, 
+        ///		    @notify_level_page=2, 
+        ///		    @delete_level=0, 
+        ///		    @description=&apos;{1}&apos;, 
+        ///		    @category_name=&apos;{3}&apos;, 
+        ///		    @owner_login_name=&apos;sa&apos;, 
+        ///		    @notify_email_operator_name=&apos;{4}&apos;;
+        ///
+        ///            EXEC msdb.dbo.sp_add_jobserver @job_name=&apos;{0}&apos;, @server_name = &apos;{2}&apos;;.
+        /// </summary>
+        internal static string QueryStandart_AddJob {
+            get {
+                return ResourceManager.GetString("QueryStandart_AddJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USE [msdb];
+        ///
+        ///            EXEC msdb.dbo.sp_add_jobstep @job_name=&apos;{0}&apos;, @step_name=&apos;{1}&apos;, 
+        ///		            @step_id={4}, 
+        ///		            @cmdexec_success_code=0, 
+        ///		            @on_success_action={5}, 
+        ///		            @on_fail_action={6}, 
+        ///		            @retry_attempts=0, 
+        ///		            @retry_interval=0, 
+        ///		            @os_run_priority=0, @subsystem=&apos;TSQL&apos;, 
+        ///		            @command=&apos;{3}&apos;,
+        ///                    @database_name=&apos;{2}&apos;, 
+        ///		            @flags=0;.
+        /// </summary>
+        internal static string QueryStandart_AddJobStep {
+            get {
+                return ResourceManager.GetString("QueryStandart_AddJobStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to declare @pathBackup as varchar(255),
+        ///            @nameFile as varchar(40),
+        ///            @backupSetId as int
+        ///
+        ///            set @nameFile = {2} + {3}
+        ///            set @pathBackup =  &apos;&apos;{1}&apos;&apos; + @nameFile + &apos;&apos;.bak&apos;&apos;
+        ///
+        ///
+        ///            BACKUP {4} {0} TO  DISK = @pathBackup
+        ///            WITH {5}, NOINIT, NAME = &apos;&apos;Копия базы {0}&apos;&apos;, SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
+        ///
+        ///
+        ///
+        ///            select @backupSetId = position from msdb..backupset where database_name=&apos;&apos;{0}&apos;&apos; 
+        ///            and backup_set_id=(select max(back [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string QueryStandart_BaseBackupQuery {
+            get {
+                return ResourceManager.GetString("QueryStandart_BaseBackupQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USE {0} ; ALTER DATABASE {0} SET RECOVERY FULL ;.
+        /// </summary>
+        internal static string QueryStandart_ChangeRecoveryModel {
+            get {
+                return ResourceManager.GetString("QueryStandart_ChangeRecoveryModel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT 
         ///                                s.backup_set_id,
         ///                                s.database_name,
@@ -366,6 +833,24 @@ namespace AutoCreateBackupPlan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to select * from msdb.dbo.sysjobs where name like &apos;{0}&apos;.
+        /// </summary>
+        internal static string QueryStandart_CheckExistJob {
+            get {
+                return ResourceManager.GetString("QueryStandart_CheckExistJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EXECUTE msdb.dbo.sysmail_help_profileaccount_sp @account_name  = &apos;{0}&apos;;.
+        /// </summary>
+        internal static string QueryStandart_ConfigAccount {
+            get {
+                return ResourceManager.GetString("QueryStandart_ConfigAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to USE master;
         ///                exec sp_CONFIGURE &apos;show advanced&apos;, 1;                
         ///                RECONFIGURE;                
@@ -375,6 +860,24 @@ namespace AutoCreateBackupPlan.Properties {
         internal static string QueryStandart_ConfigDatabaseMail {
             get {
                 return ResourceManager.GetString("QueryStandart_ConfigDatabaseMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EXECUTE msdb.dbo.sp_help_operator @operator_name  = &apos;{0}&apos;;.
+        /// </summary>
+        internal static string QueryStandart_ConfigOperator {
+            get {
+                return ResourceManager.GetString("QueryStandart_ConfigOperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EXECUTE msdb.dbo.sysmail_help_profile_sp @profile_name = &apos;{0}&apos;;.
+        /// </summary>
+        internal static string QueryStandart_ConfigProfile {
+            get {
+                return ResourceManager.GetString("QueryStandart_ConfigProfile", resourceCulture);
             }
         }
         
@@ -420,6 +923,60 @@ namespace AutoCreateBackupPlan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DATEADD(d,-7 ,getdate()).
+        /// </summary>
+        internal static string QueryStandart_DateADD7 {
+            get {
+                return ResourceManager.GetString("QueryStandart_DateADD7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USE [msdb];
+        ///                                    declare @jobId varchar(90)
+        ///
+        ///                                    declare job_cursor cursor for
+        ///                                    select   
+        ///                                        j.job_id
+        ///                                    from dbo.sysjobs j
+        ///                                    where j.name like &apos;King.%&apos;
+        ///
+        ///                                    open job_cursor
+        ///
+        ///                                    FETCH NEXT FROM job_cursor 
+        ///                                    INT [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string QueryStandart_DeleteJobs {
+            get {
+                return ResourceManager.GetString("QueryStandart_DeleteJobs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to declare @deldate datetime
+        ///            set @deldate = {1}
+        ///            EXECUTE master.dbo.xp_delete_file 0,&apos;&apos;{0}&apos;&apos;,&apos;&apos;BAK&apos;&apos;,@DelDate, 1.
+        /// </summary>
+        internal static string QueryStandart_DeleteOldBackup {
+            get {
+                return ResourceManager.GetString("QueryStandart_DeleteOldBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USE msdb ;
+        ///                EXECUTE sysmail_delete_profileaccount_sp @profile_name = &apos;{2}&apos;, @account_name = &apos;{0}&apos;;
+        ///                EXECUTE sysmail_delete_profile_sp @profile_name = &apos;{2}&apos; ;
+        ///                EXECUTE sysmail_delete_account_sp @account_name = &apos;{0}&apos;;
+        ///                EXEC sp_delete_operator @name = &apos;{1}&apos;;.
+        /// </summary>
+        internal static string QueryStandart_DeleteProfilesDBMail {
+            get {
+                return ResourceManager.GetString("QueryStandart_DeleteProfilesDBMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to USE msdb;
         ///            EXEC master.dbo.xp_instance_regwrite 
         ///            &apos;HKEY_LOCAL_MACHINE&apos;,
@@ -443,118 +1000,184 @@ namespace AutoCreateBackupPlan.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  declare @pathBackup as varchar(255),
-        ///            @nameFile as varchar(40),
-        ///            @backupSetId as int
-        ///
-        ///            set @nameFile = {2} + {3}
-        ///            set @pathBackup =  &apos;&apos;{1}&apos;&apos; + @nameFile + &apos;&apos;.bak&apos;&apos;
-        ///
-        ///
-        ///            BACKUP DATABASE {0} TO  DISK = @pathBackup
-        ///            WITH DIFFERENTIAL, NOINIT, NAME = &apos;&apos;Разностная копия базы {0}&apos;&apos;, SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
-        ///
-        ///
-        ///
-        ///            select @backupSetId = position from msdb..backupset where database_name=&apos;&apos;{0}&apos;&apos; 
-        ///            and backup_set_id=(sel [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to getdate().
         /// </summary>
-        internal static string QueryStandart_JobBackupDiff {
+        internal static string QueryStandart_GetDate {
             get {
-                return ResourceManager.GetString("QueryStandart_JobBackupDiff", resourceCulture);
+                return ResourceManager.GetString("QueryStandart_GetDate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  declare @pathBackup as varchar(255),
-        ///            @nameFile as varchar(40),
-        ///            @backupSetId as int
-        ///
-        ///            set @nameFile = {2} + {3}
-        ///            set @pathBackup =  &apos;&apos;{1}&apos;&apos; + @nameFile + &apos;&apos;.bak&apos;&apos;
-        ///
-        ///
-        ///            BACKUP DATABASE {0} TO  DISK = @pathBackup
-        ///            WITH NOFORMAT, NOINIT, NAME = &apos;&apos;Разностная копия базs {0}&apos;&apos;, SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
-        ///
-        ///
-        ///
-        ///            select @backupSetId = position from msdb..backupset where database_name=&apos;&apos;{0}&apos;&apos; 
-        ///            and backup_set_id=(select  [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to declare @s varchar(max) set @s = &apos;&apos;&apos;&apos; select @s = &apos;&apos;&lt;table cellpadding=3 cellspacing=0 border=1&gt; &lt;tr style=&quot;color:White;background-color:SteelBlue;font-weight:bold;&quot;&gt;&lt;td&gt;Name&lt;/td&gt;
+        ///	            &lt;td&gt;FILEID&lt;/td&gt;
+        ///	            &lt;td&gt;FILE_SIZE_MB&lt;/td&gt;
+        ///	            &lt;td&gt;SPACE_USED_MB&lt;/td&gt;
+        ///	            &lt;td&gt;FREE_SPACE_MB&lt;/td&gt;
+        ///	            &lt;td&gt;FILENAME&lt;/td&gt;	
+        ///            &lt;/tr&gt;&apos;&apos; +
+        ///            cast ((
+        ///            Select [Tag] = 1, [Parent] = 0, 
+        ///            [tr!1!td!element] = left(a.NAME,15),
+        ///            [tr!1!td!element [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string QueryStandart_JobBackupFull {
+        internal static string QueryStandart_GetFileStatistic {
             get {
-                return ResourceManager.GetString("QueryStandart_JobBackupFull", resourceCulture);
+                return ResourceManager.GetString("QueryStandart_GetFileStatistic", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  declare @pathBackup as varchar(255),
-        ///            @nameFile as varchar(40),
-        ///            @backupSetId as int
-        ///
-        ///            set @nameFile = {2} + {3}
-        ///            set @pathBackup =  &apos;&apos;{1}&apos;&apos; + @nameFile + &apos;&apos;.bak&apos;&apos;
-        ///
-        ///
-        ///            BACKUP DATABASE {0} TO  DISK = @pathBackup
-        ///            WITH NOFORMAT, NOINIT, NAME = &apos;&apos;Копия базы {0}&apos;&apos;, SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
-        ///
-        ///
-        ///
-        ///            select @backupSetId = position from msdb..backupset where database_name=&apos;&apos;{0}&apos;&apos; 
-        ///            and backup_set_id=(select max(backup_ [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to USE [msdb];
+        ///	
+        ///            EXEC msdb.dbo.sp_add_jobschedule @job_name=&apos;{0}&apos;, @name=&apos;{7}&apos;, 
+        ///		            @enabled=1, 
+        ///		            @freq_type={8}, 
+        ///		            @freq_interval={2}, 
+        ///		            @freq_subday_type={3}, 
+        ///		            @freq_subday_interval={4}, 
+        ///		            @freq_relative_interval={9}, 
+        ///		            @freq_recurrence_factor=1, 
+        ///		            @active_start_date={1}, 
+        ///		            @active_end_date=99991231, 
+        ///		            @active_start_time={5}, 
+        ///		            @active_end_time={6};.
         /// </summary>
-        internal static string QueryStandart_JobBackupMaster {
+        internal static string QueryStandart_JobSchedule {
             get {
-                return ResourceManager.GetString("QueryStandart_JobBackupMaster", resourceCulture);
+                return ResourceManager.GetString("QueryStandart_JobSchedule", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  declare @pathBackup as varchar(255),
-        ///            @nameFile as varchar(40),
-        ///            @backupSetId as int
-        ///
-        ///            set @nameFile = {2} + {3}
-        ///            set @pathBackup =  &apos;&apos;{1}&apos;&apos; + @nameFile + &apos;&apos;.bak&apos;&apos;
-        ///
-        ///
-        ///            BACKUP DATABASE {0} TO  DISK = @pathBackup
-        ///            WITH NOFORMAT, NOINIT, NAME = &apos;&apos;Копия базы {0}&apos;&apos;, SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
-        ///
-        ///
-        ///
-        ///            select @backupSetId = position from msdb..backupset where database_name=&apos;&apos;{0}&apos;&apos; 
-        ///            and backup_set_id=(select max(backup_ [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &apos;&apos;declare @s varchar(max) select @s =  &apos;&apos;&apos;&apos;&lt;table cellpadding=3 cellspacing=0 border=1&gt; &lt;tr style=&quot;color:White;background-color:SteelBlue;font-weight:bold;&quot;&gt; &lt;td&gt;DBName&lt;/td&gt;
+        ///                                   &lt;td&gt;Output&lt;/td&gt;
+        ///                                   &lt;td&gt;MessageText&lt;/td&gt;
+        ///                                   &lt;/tr&gt;&apos;&apos;&apos;&apos;+
+        ///                                   cast ((SELECT [Tag] = 1, [Parent] = 0,  
+        ///                                   [tr!1!td!element] = DB_NAME(DbId), &apos;&apos; + 
+        ///                                  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string QueryStandart_JobBackupMsdb {
+        internal static string QueryStandart_Part1_CheckDB {
             get {
-                return ResourceManager.GetString("QueryStandart_JobBackupMsdb", resourceCulture);
+                return ResourceManager.GetString("QueryStandart_Part1_CheckDB", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to declare @pathBackup as varchar(255),
-        ///@nameFile as varchar(40),
-        ///@backupSetId as int
-        ///
-        ///set @nameFile = {2} + {3}
-        ///set @pathBackup =  &apos;&apos;{1}&apos;&apos; + @nameFile + &apos;&apos;.bak&apos;&apos;
-        ///
-        ///BACKUP LOG [{0}] TO DISK =@pathBackup
-        ///WITH NOFORMAT, NOINIT, 
-        ///NAME = N&apos;&apos;Резервное копирование журнала транзакций {0}&apos;&apos;, SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
-        ///
-        ///
-        ///select @backupSetId = position from msdb..backupset where database_name=N&apos;&apos;{0}&apos;&apos; 
-        ///and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=N&apos;&apos;{0}&apos;&apos; );
-        ///
-        ///if @backu [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to  EXEC msdb.dbo.sp_send_dbmail
+        ///            @profile_name = &apos;&apos;&apos;&apos;{0}&apos;&apos;&apos;&apos;,
+        ///              @recipients = &apos;&apos;&apos;&apos;{1}&apos;&apos;&apos;&apos;,
+        ///              @subject = &apos;&apos;&apos;&apos;{2}&apos;&apos;&apos;&apos;,
+        ///              @body = @s,
+        ///              @body_format = &apos;&apos;&apos;&apos;HTML&apos;&apos;&apos;&apos;;&apos;&apos;.
         /// </summary>
-        internal static string QueryStandart_JobbackupTran {
+        internal static string QueryStandart_Part2_CheckDB {
             get {
-                return ResourceManager.GetString("QueryStandart_JobbackupTran", resourceCulture);
+                return ResourceManager.GetString("QueryStandart_Part2_CheckDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to declare @dbName varchar(50),
+        ///	        @PHYSICAL_ONLY bit = 0
+        ///	
+        ///            set @dbName = &apos;&apos;{1}&apos;&apos;
+        ///
+        ///            IF OBJECT_ID(&apos;&apos;tempdb..#DBCC_OUTPUT&apos;&apos;) IS NOT NULL
+        ///		        DROP TABLE #DBCC_OUTPUT
+        ///
+        ///	CREATE TABLE #DBCC_OUTPUT(
+        ///		Error int NOT NULL,
+        ///		[Level] int NOT NULL,
+        ///		State int NOT NULL,
+        ///		MessageText nvarchar(256) NOT NULL,
+        ///		RepairLevel int NULL,
+        ///		Status int NOT NULL,
+        ///		DbId int NOT NULL,
+        ///		ObjectId int NOT NULL,
+        ///		IndexId int NOT NULL,
+        ///		PartitionId int NOT NULL,
+        ///		AllocUnitId int NOT NULL,
+        ///		[File]  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string QueryStandart_Part3_CheckDB {
+            get {
+                return ResourceManager.GetString("QueryStandart_Part3_CheckDB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to declare @deldate datetime
+        ///            set @deldate = getdate()
+        ///            EXECUTE master.dbo.xp_delete_file 0,&apos;&apos;{0}&apos;&apos;,&apos;&apos;BAK&apos;&apos;,@DelDate, 1.
+        /// </summary>
+        internal static string QueryStandart_QueryDeleteJob {
+            get {
+                return ResourceManager.GetString("QueryStandart_QueryDeleteJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USE {0};            
+        ///
+        ///DECLARE @logName nvarchar(90)
+        ///
+        ///DECLARE log_cursor CURSOR FOR 
+        ///
+        ///select NAME = left(a.NAME,15) from
+        ///dbo.sysfiles a
+        ///where a.groupid = 0
+        ///
+        ///OPEN log_cursor
+        ///
+        ///FETCH NEXT FROM log_cursor 
+        ///INTO @logName
+        ///
+        ///WHILE @@FETCH_STATUS = 0
+        ///BEGIN
+        ///	DBCC SHRINKFILE (@logName , 0, TRUNCATEONLY)
+        ///		
+        ///	FETCH NEXT FROM log_cursor 
+        ///	INTO @logName
+        ///END.
+        /// </summary>
+        internal static string QueryStandart_ShrinkTransaction {
+            get {
+                return ResourceManager.GetString("QueryStandart_ShrinkTransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to REPLACE(REPLACE(convert(varchar,GETDATE(), 126),&apos;&apos;:&apos;&apos;,&apos;&apos;_&apos;&apos;) ,&apos;&apos;.&apos;&apos;,&apos;&apos;_&apos;&apos;).
+        /// </summary>
+        internal static string QueryStandart_TimeStamp {
+            get {
+                return ResourceManager.GetString("QueryStandart_TimeStamp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USE [msdb];
+        ///
+        ///           EXEC msdb.dbo.sp_update_job @job_name=&apos;{0}&apos;, 
+        ///		        @enabled=1, 
+        ///		        @start_step_id=1, 
+        ///		        @notify_level_eventlog=0, 
+        ///		        @notify_level_email={4}, 
+        ///		        @notify_level_netsend=2, 
+        ///		        @notify_level_page=2, 
+        ///		        @delete_level=0, 
+        ///		        @description=&apos;{1}&apos;, 
+        ///		        @category_name=&apos;{2}&apos;, 
+        ///		        @owner_login_name=&apos;sa&apos;, 
+        ///		        @notify_email_operator_name=&apos;{3}&apos;, 
+        ///		        @notify_netsend_operator_name=&apos;&apos;, 
+        ///		        @notify_page_operato [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string QueryStandart_UpdateJob {
+            get {
+                return ResourceManager.GetString("QueryStandart_UpdateJob", resourceCulture);
             }
         }
         
@@ -565,7 +1188,7 @@ namespace AutoCreateBackupPlan.Properties {
         ///                           @subject = &apos;Test message&apos;,
         ///                           @body = &apos;Тестовое сообщение с MS SQL Server отправлено успешно&apos;;.
         /// </summary>
-        internal static string TestSendEmail {
+        internal static string QueryStandart_TestSendEmail {
             get {
                 return ResourceManager.GetString("TestSendEmail", resourceCulture);
             }

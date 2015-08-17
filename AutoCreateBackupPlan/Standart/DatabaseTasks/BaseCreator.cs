@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using AutoCreateBackupPlan.Properties;
 using log4net;
 using System;
 using System.Data.SqlClient;
@@ -47,23 +48,21 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks
             }
             catch (Exception ex)
             {
-                log.Error(string.Format("Ошибка на этапе выполнения команды: {0}\r\nСведения: {1}",
-                    executedCommand,
-                    ex.Message));
-                MessageBox.Show("При выполнение возникла ошибка. См. файл логов");
+                log.Error(string.Format(Resources.Msg_ErrorOnStage, executedCommand, ex.Message));
+                MessageBox.Show(Resources.Msg_ErrorLookLogs);
 
             }
         }
 
         private bool ExistJob(SqlConnection connection)
         {
-            string sqlCheckJob = "select * from msdb.dbo.sysjobs where name like '" + nameJob + "'";
+            string sqlCheckJob = string.Format(Resources.QueryStandart_CheckExistJob, nameJob);
             using (SqlDataReader reader = SQLHelper.GetDataReader(connection, sqlCheckJob))
             {
 
                 if (reader != null && reader.HasRows)
                 {
-                    log.Debug("Задача " + nameJob + " уже создана в базе данных");
+                    log.Debug(string.Format(Resources.Msg_JobExist, nameJob));
                   
                     return true;
                 }

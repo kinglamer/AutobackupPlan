@@ -62,8 +62,8 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
         {
         
 
-            string sqlCheck = 
-                "EXECUTE msdb.dbo.sysmail_help_profile_sp @profile_name = '" + ClassConstHelper.profileName + "';";
+            string sqlCheck =
+                string.Format(Resources.QueryStandart_ConfigProfile, Resources.Msg_Query_Profile);
 
             using (SqlDataReader reader = SQLHelper.GetDataReader(connection, sqlCheck))
             {
@@ -75,21 +75,20 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
                 {
                     log.Debug(Resources.Msg_DBMail_DBMailProfileConfig);
 
-                    int code = SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_CreateProfileDatabaseMail, ClassConstHelper.profileName));
+                    int code = SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_CreateProfileDatabaseMail, Resources.Msg_Query_Profile));
 
                     log.Debug(Resources.Msg_DBMail_OperationExecuted + code);
 
                     log.Debug(Resources.Msg_DBMail_ActivateProfile);
 
-                    code = SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_EnableEmailSQLAgent, ClassConstHelper.profileName));
+                    code = SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_EnableEmailSQLAgent, Resources.Msg_Query_Profile));
 
                     log.Debug(Resources.Msg_DBMail_OperationExecuted + code);
                 }
                     
             }
 
-           sqlCheck = 
-                "EXECUTE msdb.dbo.sysmail_help_profileaccount_sp @account_name  = '" + ClassConstHelper.accountName + "';";
+            sqlCheck = string.Format(Resources.QueryStandart_ConfigAccount, Resources.Msg_Query_Account);
 
             using (SqlDataReader reader = SQLHelper.GetDataReader(connection, sqlCheck))
             {
@@ -102,21 +101,20 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
 
                     log.Debug(Resources.Msg_DBMail_AccountCreate);
 
-                    int code =  SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_CreateProfileDatabaseMail, mail, smtp, user, pass, ClassConstHelper.accountName));
+                    int code = SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_CreateProfileDatabaseMail, mail, smtp, user, pass, Resources.Msg_Query_Account));
 
                     log.Debug(Resources.Msg_DBMail_OperationExecuted + code);
 
                     log.Debug(Resources.Msg_DBMail_AddAccountToDBmail);
 
-                    code = SQLHelper.ExecuteMyQuery(connection, 
-                        string.Format(Resources.QueryStandart_AddAccountToProfileDatabaseMail, ClassConstHelper.profileName, ClassConstHelper.accountName));
+                    code = SQLHelper.ExecuteMyQuery(connection,
+                        string.Format(Resources.QueryStandart_AddAccountToProfileDatabaseMail, Resources.Msg_Query_Profile, Resources.Msg_Query_Account));
 
                     log.Debug(Resources.Msg_DBMail_OperationExecuted + code);
                 }
             }
 
-             sqlCheck =
-                "EXECUTE msdb.dbo.sp_help_operator @operator_name  = '" + ClassConstHelper.emailOperatorName + "';";
+            sqlCheck = string.Format(Resources.QueryStandart_ConfigOperator, Resources.Msg_Query_OperatorName);
 
             using (SqlDataReader reader = SQLHelper.GetDataReader(connection, sqlCheck))
             {
@@ -128,7 +126,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
                 {
                     log.Debug(Resources.Msg_DBMail_OperatorCreate);
 
-                    int code = SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_CreateOperator, emailOperator, ClassConstHelper.emailOperatorName));
+                    int code = SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_CreateOperator, emailOperator, Resources.Msg_Query_OperatorName));
 
                     log.Debug(Resources.Msg_DBMail_OperationExecuted + code);
                 }
@@ -143,7 +141,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseMail
         /// </summary>
         public static void TestSendingEmail(SqlConnection connection, string emailAddress)
         {
-            SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.TestSendEmail, emailAddress,ClassConstHelper.profileName));
+            SQLHelper.ExecuteMyQuery(connection, string.Format(Resources.QueryStandart_TestSendEmail, emailAddress, Resources.Msg_Query_Profile));
         }
 
    

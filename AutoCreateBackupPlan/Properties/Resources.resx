@@ -280,52 +280,6 @@
   <data name="Msg_DBMail_OperatorCreate" xml:space="preserve">
     <value>Создаем Database Mail Operator</value>
   </data>
-  <data name="QueryStandart_JobBackupMaster" xml:space="preserve">
-    <value> declare @pathBackup as varchar(255),
-            @nameFile as varchar(40),
-            @backupSetId as int
-
-            set @nameFile = {2} + {3}
-            set @pathBackup =  ''{1}'' + @nameFile + ''.bak''
-
-
-            BACKUP DATABASE {0} TO  DISK = @pathBackup
-            WITH NOFORMAT, NOINIT, NAME = ''Копия базы {0}'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
-
-
-
-            select @backupSetId = position from msdb..backupset where database_name=''{0}'' 
-            and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=''{0}'')
-            if @backupSetId is null 
-            begin 
-	            raiserror(''Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.'', 16, 1) 
-            end
-            RESTORE VERIFYONLY FROM  DISK = @pathBackup
-            WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND</value>
-  </data>
-  <data name="QueryStandart_JobBackupMsdb" xml:space="preserve">
-    <value> declare @pathBackup as varchar(255),
-            @nameFile as varchar(40),
-            @backupSetId as int
-
-            set @nameFile = {2} + {3}
-            set @pathBackup =  ''{1}'' + @nameFile + ''.bak''
-
-
-            BACKUP DATABASE {0} TO  DISK = @pathBackup
-            WITH NOFORMAT, NOINIT, NAME = ''Копия базы {0}'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
-
-
-
-            select @backupSetId = position from msdb..backupset where database_name=''{0}'' 
-            and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=''{0}'')
-            if @backupSetId is null 
-            begin 
-	            raiserror(''Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.'', 16, 1) 
-            end
-            RESTORE VERIFYONLY FROM  DISK = @pathBackup
-            WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND</value>
-  </data>
   <data name="QueryStandart_CheckExistBackup" xml:space="preserve">
     <value>SELECT 
                                 s.backup_set_id,
@@ -349,73 +303,431 @@
                                 WHERE s.database_name = '{0}' 
                                 and s.[type] like 'D'</value>
   </data>
-  <data name="QueryStandart_JobBackupDiff" xml:space="preserve">
-    <value> declare @pathBackup as varchar(255),
-            @nameFile as varchar(40),
-            @backupSetId as int
-
-            set @nameFile = {2} + {3}
-            set @pathBackup =  ''{1}'' + @nameFile + ''.bak''
-
-
-            BACKUP DATABASE {0} TO  DISK = @pathBackup
-            WITH DIFFERENTIAL, NOINIT, NAME = ''Разностная копия базы {0}'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
-
-
-
-            select @backupSetId = position from msdb..backupset where database_name=''{0}'' 
-            and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=''{0}'')
-            if @backupSetId is null 
-            begin 
-	            raiserror(''Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.'', 16, 1) 
-            end
-            RESTORE VERIFYONLY FROM  DISK = @pathBackup
-            WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND</value>
-  </data>
-  <data name="QueryStandart_JobBackupFull" xml:space="preserve">
-    <value> declare @pathBackup as varchar(255),
-            @nameFile as varchar(40),
-            @backupSetId as int
-
-            set @nameFile = {2} + {3}
-            set @pathBackup =  ''{1}'' + @nameFile + ''.bak''
-
-
-            BACKUP DATABASE {0} TO  DISK = @pathBackup
-            WITH NOFORMAT, NOINIT, NAME = ''Разностная копия базs {0}'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
-
-
-
-            select @backupSetId = position from msdb..backupset where database_name=''{0}'' 
-            and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=''{0}'')
-            if @backupSetId is null 
-            begin 
-	            raiserror(''Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.'', 16, 1) 
-            end
-            RESTORE VERIFYONLY FROM  DISK = @pathBackup
-            WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND</value>
-  </data>
-  <data name="QueryStandart_JobbackupTran" xml:space="preserve">
+  <data name="QueryStandart_BaseBackupQuery" xml:space="preserve">
     <value>declare @pathBackup as varchar(255),
-@nameFile as varchar(40),
-@backupSetId as int
+            @nameFile as varchar(40),
+            @backupSetId as int
 
-set @nameFile = {2} + {3}
-set @pathBackup =  ''{1}'' + @nameFile + ''.bak''
-
-BACKUP LOG [{0}] TO DISK =@pathBackup
-WITH NOFORMAT, NOINIT, 
-NAME = N''Резервное копирование журнала транзакций {0}'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
+            set @nameFile = {2} + {3}
+            set @pathBackup =  ''{1}'' + @nameFile + ''.bak''
 
 
-select @backupSetId = position from msdb..backupset where database_name=N''{0}'' 
-and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=N''{0}'' );
+            BACKUP {4} {0} TO  DISK = @pathBackup
+            WITH {5}, NOINIT, NAME = ''Копия базы {0}'', SKIP, NOREWIND, NOUNLOAD,  STATS = 10;
 
-if @backupSetId is null 
-begin 
-	raiserror(N''Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.'', 16, 1) 
-end
-RESTORE VERIFYONLY FROM 
-DISK = @pathBackup WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND;</value>
+
+
+            select @backupSetId = position from msdb..backupset where database_name=''{0}'' 
+            and backup_set_id=(select max(backup_set_id) from msdb..backupset where database_name=''{0}'')
+            if @backupSetId is null 
+            begin 
+	            raiserror(''Ошибка верификации. Сведения о резервном копировании для базы данных {0} не найдены.'', 16, 1) 
+            end
+            RESTORE VERIFYONLY FROM  DISK = @pathBackup
+            WITH FILE = @backupSetId,  NOUNLOAD,  NOREWIND</value>
+  </data>
+  <data name="QueryStandart_ChangeRecoveryModel" xml:space="preserve">
+    <value>USE {0} ; ALTER DATABASE {0} SET RECOVERY FULL ;</value>
+  </data>
+  <data name="QueryStandart_QueryDeleteJob" xml:space="preserve">
+    <value>declare @deldate datetime
+            set @deldate = getdate()
+            EXECUTE master.dbo.xp_delete_file 0,''{0}'',''BAK'',@DelDate, 1</value>
+  </data>
+  <data name="QueryStandart_DeleteOldBackup" xml:space="preserve">
+    <value>declare @deldate datetime
+            set @deldate = {1}
+            EXECUTE master.dbo.xp_delete_file 0,''{0}'',''BAK'',@DelDate, 1</value>
+  </data>
+  <data name="QueryStandart_ShrinkTransaction" xml:space="preserve">
+    <value>USE {0};            
+
+DECLARE @logName nvarchar(90)
+
+DECLARE log_cursor CURSOR FOR 
+
+select NAME = left(a.NAME,15) from
+dbo.sysfiles a
+where a.groupid = 0
+
+OPEN log_cursor
+
+FETCH NEXT FROM log_cursor 
+INTO @logName
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	DBCC SHRINKFILE (@logName , 0, TRUNCATEONLY)
+		
+	FETCH NEXT FROM log_cursor 
+	INTO @logName
+END</value>
+  </data>
+  <data name="QueryStandart_GetFileStatistic" xml:space="preserve">
+    <value>declare @s varchar(max) set @s = '''' select @s = ''&lt;table cellpadding=3 cellspacing=0 border=1&gt; &lt;tr style="color:White;background-color:SteelBlue;font-weight:bold;"&gt;&lt;td&gt;Name&lt;/td&gt;
+	            &lt;td&gt;FILEID&lt;/td&gt;
+	            &lt;td&gt;FILE_SIZE_MB&lt;/td&gt;
+	            &lt;td&gt;SPACE_USED_MB&lt;/td&gt;
+	            &lt;td&gt;FREE_SPACE_MB&lt;/td&gt;
+	            &lt;td&gt;FILENAME&lt;/td&gt;	
+            &lt;/tr&gt;'' +
+            cast ((
+            Select [Tag] = 1, [Parent] = 0, 
+            [tr!1!td!element] = left(a.NAME,15),
+            [tr!1!td!element] =  a.FILEID,
+             [tr!1!td!element] = convert(decimal(12,2),round(a.size/128.000,2)),
+             [tr!1!td!element] =  convert(decimal(12,2),round(fileproperty(a.name,''SpaceUsed'')/128.000,2)),
+             [tr!1!td!element] =  convert(decimal(12,2),round((a.size-fileproperty(a.name,''SpaceUsed''))/128.000,2)) ,
+             [tr!1!td!element] =  a.FILENAME
+            From dbo.sysfiles a
+            for xml explicit) as varchar(max))  + ''&lt;/table&gt;''</value>
+  </data>
+  <data name="QueryStandart_AddJob" xml:space="preserve">
+    <value>USE [msdb];
+
+            EXEC  msdb.dbo.sp_add_job @job_name='{0}', 
+		    @enabled=1, 
+		    @notify_level_eventlog=0, 
+		    @notify_level_email=2, 
+		    @notify_level_netsend=2, 
+		    @notify_level_page=2, 
+		    @delete_level=0, 
+		    @description='{1}', 
+		    @category_name='{3}', 
+		    @owner_login_name='sa', 
+		    @notify_email_operator_name='{4}';
+
+            EXEC msdb.dbo.sp_add_jobserver @job_name='{0}', @server_name = '{2}';</value>
+  </data>
+  <data name="QueryStandart_AddJobStep" xml:space="preserve">
+    <value>USE [msdb];
+
+            EXEC msdb.dbo.sp_add_jobstep @job_name='{0}', @step_name='{1}', 
+		            @step_id={4}, 
+		            @cmdexec_success_code=0, 
+		            @on_success_action={5}, 
+		            @on_fail_action={6}, 
+		            @retry_attempts=0, 
+		            @retry_interval=0, 
+		            @os_run_priority=0, @subsystem='TSQL', 
+		            @command='{3}',
+                    @database_name='{2}', 
+		            @flags=0;</value>
+  </data>
+  <data name="QueryStandart_AddEmailNotify" xml:space="preserve">
+    <value> EXEC msdb.dbo.sp_send_dbmail
+            @profile_name = ''{0}'',
+              @recipients = ''{1}'',
+              @subject = ''{2}'',
+              @body = @s,
+              @body_format = ''HTML''</value>
+  </data>
+  <data name="QueryStandart_UpdateJob" xml:space="preserve">
+    <value>USE [msdb];
+
+           EXEC msdb.dbo.sp_update_job @job_name='{0}', 
+		        @enabled=1, 
+		        @start_step_id=1, 
+		        @notify_level_eventlog=0, 
+		        @notify_level_email={4}, 
+		        @notify_level_netsend=2, 
+		        @notify_level_page=2, 
+		        @delete_level=0, 
+		        @description='{1}', 
+		        @category_name='{2}', 
+		        @owner_login_name='sa', 
+		        @notify_email_operator_name='{3}', 
+		        @notify_netsend_operator_name='', 
+		        @notify_page_operator_name='';</value>
+  </data>
+  <data name="QueryStandart_JobSchedule" xml:space="preserve">
+    <value>USE [msdb];
+	
+            EXEC msdb.dbo.sp_add_jobschedule @job_name='{0}', @name='{7}', 
+		            @enabled=1, 
+		            @freq_type={8}, 
+		            @freq_interval={2}, 
+		            @freq_subday_type={3}, 
+		            @freq_subday_interval={4}, 
+		            @freq_relative_interval={9}, 
+		            @freq_recurrence_factor=1, 
+		            @active_start_date={1}, 
+		            @active_end_date=99991231, 
+		            @active_start_time={5}, 
+		            @active_end_time={6};</value>
+  </data>
+  <data name="Msg_ErrorLookLogs" xml:space="preserve">
+    <value>При выполнение возникла ошибка. См. файл логов</value>
+  </data>
+  <data name="Msg_ErrorOnStage" xml:space="preserve">
+    <value>Ошибка на этапе выполнения команды: {0} 
+Сведения: {1}</value>
+  </data>
+  <data name="QueryStandart_CheckExistJob" xml:space="preserve">
+    <value>select * from msdb.dbo.sysjobs where name like '{0}'</value>
+  </data>
+  <data name="Msg_JobExist" xml:space="preserve">
+    <value>Задача {0} уже создана в базе данных</value>
+  </data>
+  <data name="Msg_Query_GetFileStat" xml:space="preserve">
+    <value>Получение статистики файлов</value>
+  </data>
+  <data name="QueryStandart_Part1_CheckDB" xml:space="preserve">
+    <value>''declare @s varchar(max) select @s =  ''''&lt;table cellpadding=3 cellspacing=0 border=1&gt; &lt;tr style="color:White;background-color:SteelBlue;font-weight:bold;"&gt; &lt;td&gt;DBName&lt;/td&gt;
+                                   &lt;td&gt;Output&lt;/td&gt;
+                                   &lt;td&gt;MessageText&lt;/td&gt;
+                                   &lt;/tr&gt;''''+
+                                   cast ((SELECT [Tag] = 1, [Parent] = 0,  
+                                   [tr!1!td!element] = DB_NAME(DbId), '' + 
+                                   ''[tr!1!td!element] = CASE WHEN MessageText LIKE ''''%0 allocation errors and 0 consistency errors%'''' THEN 0 ELSE 1 END,
+                                   [tr!1!td!element] = MessageText 
+                                   FROM #DBCC_OUTPUT 
+                                   for xml explicit) as varchar(max))  + ''''&lt;/table&gt;''''</value>
+    <comment>//использую не стандартную функцию, т.к. в данном случае это запрос в тексте, и требовалось больше амперсантов</comment>
+  </data>
+  <data name="QueryStandart_Part2_CheckDB" xml:space="preserve">
+    <value> EXEC msdb.dbo.sp_send_dbmail
+            @profile_name = ''''{0}'''',
+              @recipients = ''''{1}'''',
+              @subject = ''''{2}'''',
+              @body = @s,
+              @body_format = ''''HTML'''';''</value>
+    <comment>//использую не стандартную функцию, т.к. в данном случае это запрос в тексте, и требовалось больше амперсантов</comment>
+  </data>
+  <data name="QueryStandart_Part3_CheckDB" xml:space="preserve">
+    <value>declare @dbName varchar(50),
+	        @PHYSICAL_ONLY bit = 0
+	
+            set @dbName = ''{1}''
+
+            IF OBJECT_ID(''tempdb..#DBCC_OUTPUT'') IS NOT NULL
+		        DROP TABLE #DBCC_OUTPUT
+
+	CREATE TABLE #DBCC_OUTPUT(
+		Error int NOT NULL,
+		[Level] int NOT NULL,
+		State int NOT NULL,
+		MessageText nvarchar(256) NOT NULL,
+		RepairLevel int NULL,
+		Status int NOT NULL,
+		DbId int NOT NULL,
+		ObjectId int NOT NULL,
+		IndexId int NOT NULL,
+		PartitionId int NOT NULL,
+		AllocUnitId int NOT NULL,
+		[File] int NOT NULL,
+		Page int NOT NULL,
+		Slot int NOT NULL,
+		RefFile int NOT NULL,
+		RefPage int NOT NULL,
+		RefSlot int NOT NULL,
+		Allocation int NOT NULL)
+
+	DECLARE c_databases CURSOR LOCAL FAST_FORWARD
+	FOR
+	SELECT Name
+	FROM master.sys.databases
+	WHERE Name = ISNULL(@dbName, Name)
+
+	OPEN c_databases
+	
+	FETCH NEXT FROM c_databases INTO @dbName
+
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+
+		DECLARE @sql nvarchar(4000)
+		SET @sql = ''DBCC CHECKDB(''+ @dbName +'') WITH TABLERESULTS, ALL_ERRORMSGS''
+		
+		IF @PHYSICAL_ONLY = 1 
+			SET @sql = @sql + '', PHYSICAL_ONLY ''
+
+
+		INSERT INTO #DBCC_OUTPUT
+		EXEC(@sql)
+
+		FETCH NEXT FROM c_databases INTO @dbName
+	END
+	
+	CLOSE c_databases
+	DEALLOCATE c_databases
+
+	IF NOT EXISTS (
+		SELECT 1 FROM #DBCC_OUTPUT 
+	)
+	BEGIN 
+		RAISERROR(''No database matches the name specified.'',10,1)
+	END 
+
+    SET @sql = {0}
+
+    EXEC(@sql);</value>
+  </data>
+  <data name="Msg_Query_CheckDB" xml:space="preserve">
+    <value>Выполнение DBCC CHECKDB</value>
+  </data>
+  <data name="Msg_Query_ShrinkLogs" xml:space="preserve">
+    <value>Сжатие логов транзакций</value>
+  </data>
+  <data name="QueryStandart_DateADD7" xml:space="preserve">
+    <value>DATEADD(d,-7 ,getdate())</value>
+  </data>
+  <data name="QueryStandart_GetDate" xml:space="preserve">
+    <value>getdate()</value>
+  </data>
+  <data name="Msg_Query_DeleteOldCopy" xml:space="preserve">
+    <value>Удаление старых копий</value>
+  </data>
+  <data name="Msg_Query_Sheduler" xml:space="preserve">
+    <value>Расписание</value>
+  </data>
+  <data name="Msg_Query_DeleteTransaction" xml:space="preserve">
+    <value>Удаление журналов транзакций</value>
+  </data>
+  <data name="Msg_Query_DeleteDiff" xml:space="preserve">
+    <value>Удаление разностных копий</value>
+  </data>
+  <data name="QueryStandart_ConfigProfile" xml:space="preserve">
+    <value>EXECUTE msdb.dbo.sysmail_help_profile_sp @profile_name = '{0}';</value>
+  </data>
+  <data name="QueryStandart_ConfigAccount" xml:space="preserve">
+    <value>EXECUTE msdb.dbo.sysmail_help_profileaccount_sp @account_name  = '{0}';</value>
+  </data>
+  <data name="QueryStandart_ConfigOperator" xml:space="preserve">
+    <value>EXECUTE msdb.dbo.sp_help_operator @operator_name  = '{0}';</value>
+  </data>
+  <data name="Msg_RequiredEmial" xml:space="preserve">
+    <value>Необходимо указать почту</value>
+  </data>
+  <data name="Msg_ReadyAddionalTask" xml:space="preserve">
+    <value>Настроены задачи дополнительного анализа БД
+</value>
+  </data>
+  <data name="Msg_NotExistEmailAdmin" xml:space="preserve">
+    <value>Не настроена почта администраора btCreateNotify_Click</value>
+  </data>
+  <data name="Msg_NeedManualBackup" xml:space="preserve">
+    <value>Для указаной вами базы данных еще не выполнялось резервное копирование данных. 
+Необходимо выполнить его в ручную, чтобы начали формировать резервные копии журналов транзакций</value>
+  </data>
+  <data name="QueryStandart_DeleteJobs" xml:space="preserve">
+    <value>USE [msdb];
+                                    declare @jobId varchar(90)
+
+                                    declare job_cursor cursor for
+                                    select   
+                                        j.job_id
+                                    from dbo.sysjobs j
+                                    where j.name like 'King.%'
+
+                                    open job_cursor
+
+                                    FETCH NEXT FROM job_cursor 
+                                    INTO @jobId
+
+                                    WHILE @@FETCH_STATUS = 0
+                                    BEGIN
+	                                    EXEC sp_delete_job @job_id=@jobId, @delete_unused_schedule=1
+
+	                                    FETCH NEXT FROM job_cursor 
+	                                    INTO @jobId
+                                    end</value>
+  </data>
+  <data name="QueryStandart_DeleteProfilesDBMail" xml:space="preserve">
+    <value>USE msdb ;
+                EXECUTE sysmail_delete_profileaccount_sp @profile_name = '{2}', @account_name = '{0}';
+                EXECUTE sysmail_delete_profile_sp @profile_name = '{2}' ;
+                EXECUTE sysmail_delete_account_sp @account_name = '{0}';
+                EXEC sp_delete_operator @name = '{1}';</value>
+  </data>
+  <data name="Msg_DeletedJobs" xml:space="preserve">
+    <value>Все созданные ранее задачи удалены
+</value>
+  </data>
+  <data name="Msg_Delete_ConfigDBMail" xml:space="preserve">
+    <value>Удалены настройки DatabaseMail
+</value>
+  </data>
+  <data name="Msg_ConfigDBMail" xml:space="preserve">
+    <value>Настроен модуль почты
+</value>
+  </data>
+  <data name="Msg_NeedRebootAgent" xml:space="preserve">
+    <value>Необходимо перезапустить вручную SQL Agent! Иначе не будут работать уведомления по почте</value>
+  </data>
+  <data name="Msg_NotConfiguretedDBMail" xml:space="preserve">
+    <value>Не настроен DatabaseMail</value>
+  </data>
+  <data name="QueryStandart_TimeStamp" xml:space="preserve">
+    <value>REPLACE(REPLACE(convert(varchar,GETDATE(), 126),'':'',''_'') ,''.'',''_'')</value>
+    <comment>У каждого созданного файла бэкапа, будет ставиться временная метка, когда он был создан, с точностью до секунд</comment>
+  </data>
+  <data name="Msg_Query_Part1_TaskCheckDB" xml:space="preserve">
+    <value>King.DBCC.CHECKDB</value>
+  </data>
+  <data name="Msg_Query_Part2_TaskCheckDB" xml:space="preserve">
+    <value>Проверка БД перед созданием полной копии базы</value>
+  </data>
+  <data name="Msg_Query_Part3_TaskCheckDB" xml:space="preserve">
+    <value>Проверка</value>
+  </data>
+  <data name="Msg_Query_Part1_Staticstic" xml:space="preserve">
+    <value>King.File.Statistics</value>
+  </data>
+  <data name="Msg_Query_Part2_Staticstic" xml:space="preserve">
+    <value>Информация о том, как распределено место в файловых группах базы</value>
+  </data>
+  <data name="Msg_Query_Part3_Staticstic" xml:space="preserve">
+    <value>Получение статистики</value>
+  </data>
+  <data name="Msg_Query_Part1_Transaction" xml:space="preserve">
+    <value>King.Backup.Transaction</value>
+  </data>
+  <data name="Msg_Query_Part2_Transaction" xml:space="preserve">
+    <value>Копия журналов транзакций базы данных</value>
+  </data>
+  <data name="Msg_Query_Copy" xml:space="preserve">
+    <value>Копия</value>
+  </data>
+  <data name="Msg_Query_Part1_Diff" xml:space="preserve">
+    <value>King.Backup.Different</value>
+  </data>
+  <data name="Msg_Query_Part2_Diff" xml:space="preserve">
+    <value>Создание разностной копии базы данных. С последующим удалением резервных копий журналов транзакций</value>
+  </data>
+  <data name="Msg_Query_Part1_Full" xml:space="preserve">
+    <value>King.Backup.Full</value>
+  </data>
+  <data name="Msg_Query_Part2_Full" xml:space="preserve">
+    <value>Создание полной копии БД. С последующим удалением журналов транзакций и разностных копий.</value>
+  </data>
+  <data name="Msg_JobBackupReady" xml:space="preserve">
+    <value>Настроен задачи резервного копирования БД
+</value>
+  </data>
+  <data name="Msg_Query_Part1_Master" xml:space="preserve">
+    <value>King.Backup.master</value>
+  </data>
+  <data name="Msg_Query_Part2_Master" xml:space="preserve">
+    <value>Копия системной базы данных master</value>
+  </data>
+  <data name="Msg_Query_Part1_MSDB" xml:space="preserve">
+    <value>King.Backup.msdb</value>
+  </data>
+  <data name="Msg_Query_Part2_MSDB" xml:space="preserve">
+    <value>Копия системной базы данных msdb</value>
+  </data>
+  <data name="Msg_BackupSystemDBReady" xml:space="preserve">
+    <value>Все задачи резервного копирования системных баз настроены!
+</value>
+  </data>
+  <data name="Msg_Query_OperatorName" xml:space="preserve">
+    <value>King.Operator</value>
+  </data>
+  <data name="Msg_Query_Profile" xml:space="preserve">
+    <value>King.Profile</value>
+  </data>
+  <data name="Msg_Query_Account" xml:space="preserve">
+    <value>King.Account</value>
   </data>
 </root>

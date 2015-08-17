@@ -1,5 +1,7 @@
 ﻿
 
+using AutoCreateBackupPlan.Properties;
+
 namespace AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask
 {
     class TaskFileStatistic : BaseCreator
@@ -16,30 +18,9 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask
 
         public override string AddJobStep()
         {
-            string sqlCommand = "declare @s varchar(max)" +
-            " set @s = ''''" +
-            " select @s = ''<table cellpadding=3 cellspacing=0 border=1>" +
-            " <tr style=\"color:White;background-color:SteelBlue;font-weight:bold;\">" +
+            string sqlCommand = Resources.QueryStandart_GetFileStatistic;
 
-	         @"<td>Name</td>
-	            <td>FILEID</td>
-	            <td>FILE_SIZE_MB</td>
-	            <td>SPACE_USED_MB</td>
-	            <td>FREE_SPACE_MB</td>
-	            <td>FILENAME</td>	
-            </tr>'' +
-            cast ((
-            Select [Tag] = 1, [Parent] = 0, 
-            [tr!1!td!element] = left(a.NAME,15),
-            [tr!1!td!element] =  a.FILEID,
-             [tr!1!td!element] = convert(decimal(12,2),round(a.size/128.000,2)),
-             [tr!1!td!element] =  convert(decimal(12,2),round(fileproperty(a.name,''SpaceUsed'')/128.000,2)),
-             [tr!1!td!element] =  convert(decimal(12,2),round((a.size-fileproperty(a.name,''SpaceUsed''))/128.000,2)) ,
-             [tr!1!td!element] =  a.FILENAME
-            From dbo.sysfiles a
-
-            for xml explicit) as varchar(max))  + ''</table>''";
-            sqlCommand += CommonCreator.AddEmailNotify(SystemTaskConstants.emailOperator, "Получение статистики файлов");
+            sqlCommand += CommonCreator.AddEmailNotify(ClassConstHelper.emailOperator, Resources.Msg_Query_GetFileStat);
 
             return CommonCreator.AddJobStep(1, 1, 2, nameJob, stepName, dbName, sqlCommand);
         }

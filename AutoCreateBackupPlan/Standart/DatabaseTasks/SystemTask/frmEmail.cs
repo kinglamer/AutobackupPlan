@@ -1,4 +1,5 @@
 ﻿using AutoCreateBackupPlan.Common;
+using AutoCreateBackupPlan.Properties;
 using AutoCreateBackupPlan.Standart.DatabaseMail;
 using System;
 using System.ComponentModel;
@@ -39,7 +40,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask
         {
             if (validMail)
             {
-                SystemTaskConstants.emailOperator = tbEmail.Text;
+                ClassConstHelper.emailOperator = tbEmail.Text;
 
 
                 ud.SetEmailData(new UserEmailData(tbEmail.Text, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty));
@@ -50,7 +51,7 @@ namespace AutoCreateBackupPlan.Standart.DatabaseTasks.SystemTask
             }
             else
             {
-                MessageBox.Show("Необходимо указать почту");
+                MessageBox.Show(Resources.Msg_RequiredEmial);
             }
         }
 

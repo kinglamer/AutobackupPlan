@@ -78,7 +78,6 @@
     <Compile Include="Standart\DatabaseTasks\BackupFolders.cs" />
     <Compile Include="Standart\DatabaseTasks\BackupSystemTasks\TaskBackupMaster.cs" />
     <Compile Include="Standart\DatabaseTasks\BackupSystemTasks\TaskBackupMsdb.cs" />
-    <Compile Include="Standart\DatabaseTasks\BackUpTasks\DatabaseConfig.cs" />
     <Compile Include="Standart\DatabaseTasks\BackUpTasks\TaskBackupDifferent.cs" />
     <Compile Include="Standart\DatabaseTasks\BackUpTasks\TaskBackupFull.cs" />
     <Compile Include="Standart\DatabaseTasks\BackUpTasks\TaskBackUpTransaction.cs" />
@@ -97,7 +96,6 @@
     <Compile Include="Standart\DatabaseTasks\SystemTask\frmEmail.designer.cs">
       <DependentUpon>frmEmail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Standart\DatabaseTasks\SystemTask\SystemTaskConstants.cs" />
     <Compile Include="Standart\DatabaseTasks\SystemTask\TaskCheckDB.cs" />
     <Compile Include="Standart\DatabaseTasks\SystemTask\TaskFileStatistic.cs" />
     <Compile Include="Standart\frmStandart.cs">

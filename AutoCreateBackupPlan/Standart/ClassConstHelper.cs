@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AutoCreateBackupPlan.Properties;
 
 namespace AutoCreateBackupPlan.Standart
 {
+    public enum TypeBackupObject
+    {
+        DATABASE, LOG
+    }
+
+    public enum BackupParametres
+    {
+        DIFFERENTIAL, NOFORMAT
+    }
+
     public class ClassConstHelper
     {
        
 
-        public static readonly string emailOperatorName = "King.Operator";
-        public static readonly string profileName = "King.Profile";
-        public static readonly string accountName = "King.Account";
-
-
-        /// <summary>
-        /// У каждого созданного файла бэкапа, будет ставиться временная метка, когда он был создан, с точностью до секунд
-        /// </summary>
-        public static readonly string formatTimeStampFiles = "REPLACE(REPLACE(convert(varchar,GETDATE(), 126),'':'',''_'') ,''.'',''_'')";
 
         /// <summary>
         /// Имена создаваемых реземерных копий баз данных 
@@ -33,6 +35,7 @@ namespace AutoCreateBackupPlan.Standart
 
         public static readonly string fileConfigsStandart = "dbStandart";
 
+        public static string emailOperator { get; set; }
 
     }
 }

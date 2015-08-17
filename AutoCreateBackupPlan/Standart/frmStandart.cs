@@ -66,27 +66,27 @@ namespace AutoCreateBackupPlan.Standart
 
                 if (frm.EmailAdministrator)
                 {
-                    TaskCheckDB task = new TaskCheckDB("King.DBCC.CHECKDB",
-                                                       "Проверка БД перед созданием полной копии базы",
+                    TaskCheckDB task = new TaskCheckDB(Resources.Msg_Query_Part1_TaskCheckDB,
+                                                       Resources.Msg_Query_Part2_TaskCheckDB,
                                                        ClassConstHelper.serverSQL,
-                                                       "Проверка",
+                                                       Resources.Msg_Query_Part3_TaskCheckDB,
                                                        ClassConstHelper.DB);
                     task.Create(sqlConnection1, "TaskCheckDB");
 
 
 
-                    TaskFileStatistic taskFile = new TaskFileStatistic("King.File.Statistics",
-                                                                       "Информация о том, как распределено место в файловых группах базы",
+                    TaskFileStatistic taskFile = new TaskFileStatistic(Resources.Msg_Query_Part1_Staticstic,
+                                                                       Resources.Msg_Query_Part2_Staticstic,
                                                                        ClassConstHelper.serverSQL,
-                                                                       "Получение статистики",
+                                                                       Resources.Msg_Query_Part3_Staticstic,
                                                                        ClassConstHelper.DB);
                     taskFile.Create(sqlConnection1, "TaskFileStatistic");
 
-                    rtbLog.AppendText("Настроены задачи дополнительного анализа БД\r\n");
+                    rtbLog.AppendText(Resources.Msg_ReadyAddionalTask);
                 }
                 else
                 {
-                    log.Debug("Не настроен почта администраора btCreateNotify_Click");
+                    log.Debug(Resources.Msg_NotExistEmailAdmin);
                 }
             }
             
@@ -102,57 +102,56 @@ namespace AutoCreateBackupPlan.Standart
                 if (frmBacksetup.ConfigureTask)
                 {
 
-                    SQLHelper.ExecuteMyQuery(sqlConnection1, DatabaseConfig.ChangeRecoveryModel());
+                    SQLHelper.ExecuteMyQuery(sqlConnection1, string.Format(Resources.QueryStandart_ChangeRecoveryModel, ClassConstHelper.DB));
 
                     using (SqlDataReader reader = SQLHelper.GetDataReader(sqlConnection1,
-                                                                       DatabaseConfig.CheckExistFullBackups()))
+                                                                       string.Format(Resources.QueryStandart_CheckExistBackup, ClassConstHelper.DB)))
                     {
                         if (!reader.HasRows)
-                            MessageBox.Show("Для указаной вами базы данных еще не выполнялось резервное копирование данных. \r\n" +
-                                            "Необходимо выполнить его в ручную, чтобы начали формировать резервные копии журналов транзакций");
+                            MessageBox.Show(Resources.Msg_NeedManualBackup);
                     }
 
 
-                    TaskBackUpTransaction task = new TaskBackUpTransaction("King.Backup.Transaction",
-                    "Копия журналов транзакций базы данных",
+                    TaskBackUpTransaction task = new TaskBackUpTransaction(Resources.Msg_Query_Part1_Transaction,
+                    Resources.Msg_Query_Part2_Transaction,
                      ClassConstHelper.serverSQL,
-                     "Копия",
+                     Resources.Msg_Query_Copy,
                      ClassConstHelper.DB, BackupFolders.pathTransaction);
                     task.Create(sqlConnection1, "TaskBackUpTransaction");
 
-                    TaskBackupDifferent taskDiff = new TaskBackupDifferent("King.Backup.Different",
-                        "Создание разностной копии базы данных. С последующим удалением резервных копий журналов транзакций",
-                          ClassConstHelper.serverSQL,
-                         "Копия",
+                    TaskBackupDifferent taskDiff = new TaskBackupDifferent(Resources.Msg_Query_Part1_Diff,
+                        Resources.Msg_Query_Part2_Diff,
+                         ClassConstHelper.serverSQL,
+                         Resources.Msg_Query_Copy,
                          ClassConstHelper.DB, BackupFolders.pathDifferent);
                     taskDiff.Create(sqlConnection1, "TaskBackupDifferent");
 
-                    TaskBackupFull taskFull = new TaskBackupFull("King.Backup.Full",
-                        "Создание полной копии БД. С последующим удалением журналов транзакций и разностных копий.",
+                    TaskBackupFull taskFull = new TaskBackupFull(Resources.Msg_Query_Part1_Full,
+                        Resources.Msg_Query_Part2_Full,
                           ClassConstHelper.serverSQL,
-                         "Копия",
+                         Resources.Msg_Query_Copy,
                          ClassConstHelper.DB, BackupFolders.pathFull);
                     taskFull.Create(sqlConnection1, "TaskBackupFull");
 
-                    rtbLog.AppendText("Настроен задачи резервного копирования БД\r\n");
+                    rtbLog.AppendText(Resources.Msg_JobBackupReady);
 
 
 
-                    TaskBackupMaster taskMaster = new TaskBackupMaster("King.Backup.master",
-                          "Копия системной базы данных master",
+                    TaskBackupMaster taskMaster = new TaskBackupMaster(Resources.Msg_Query_Part1_Master,
+                          Resources.Msg_Query_Part2_Master,
                            ClassConstHelper.serverSQL,
-                           "Копия",
+                           Resources.Msg_Query_Copy,
                            "master", BackupFolders.pathMasterDB);
                         taskMaster.Create(sqlConnection1, "TaskBackupMaster");
 
-                        TaskBackupMsdb taskMSDB = new TaskBackupMsdb("King.Backup.msdb",
-                          "Копия системной базы данных msdb",
+                        TaskBackupMsdb taskMSDB = new TaskBackupMsdb(Resources.Msg_Query_Part1_MSDB,
+                          Resources.Msg_Query_Part2_MSDB,
                            ClassConstHelper.serverSQL,
-                           "Копия",
+                           Resources.Msg_Query_Copy,
                            "msdb", BackupFolders.pathMSDB);
                         taskMSDB.Create(sqlConnection1, "TaskBackupMsdb");
 
-                        rtbLog.AppendText("Все задачи резервного копирования системных баз настроены!\r\n");
+                        rtbLog.AppendText(Resources.Msg_BackupSystemDBReady);
                 }
 
                
@@ -166,41 +165,17 @@ namespace AutoCreateBackupPlan.Standart
             if (sqlConnection1.State == ConnectionState.Open)
             {
                 rtbLog.Text = string.Empty;
-                string sqlDelete = @"USE [msdb];
-                                    declare @jobId varchar(90)
-
-                                    declare job_cursor cursor for
-                                    select   
-                                        j.job_id
-                                    from dbo.sysjobs j
-                                    where j.name like 'King.%'
-
-                                    open job_cursor
-
-                                    FETCH NEXT FROM job_cursor 
-                                    INTO @jobId
-
-                                    WHILE @@FETCH_STATUS = 0
-                                    BEGIN
-	                                    EXEC sp_delete_job @job_id=@jobId, @delete_unused_schedule=1
-
-	                                    FETCH NEXT FROM job_cursor 
-	                                    INTO @jobId
-                                    end";
+                string sqlDelete = Resources.QueryStandart_DeleteJobs;
                 SQLHelper.ExecuteMyQuery(sqlConnection1, sqlDelete);
-                rtbLog.AppendText("Все созданные ранее задачи удалены\r\n");
+                rtbLog.AppendText(Resources.Msg_DeletedJobs);
 
-                string deleteDatabaseEmailConfigs = string.Format(@"USE msdb ;
-                EXECUTE sysmail_delete_profileaccount_sp @profile_name = '{2}', @account_name = '{0}';
-                EXECUTE sysmail_delete_profile_sp @profile_name = '{2}' ;
-                EXECUTE sysmail_delete_account_sp @account_name = '{0}';
-                EXEC sp_delete_operator @name = '{1}';", 
-                                          ClassConstHelper.accountName, 
-                                          ClassConstHelper.emailOperatorName,
-                                          ClassConstHelper.profileName);
+                string deleteDatabaseEmailConfigs = string.Format(Resources.QueryStandart_DeleteProfilesDBMail,
+                                          Resources.Msg_Query_Account,
+                                          Resources.Msg_Query_OperatorName,
+                                          Resources.Msg_Query_Profile);
 
                 SQLHelper.ExecuteMyQuery(sqlConnection1, deleteDatabaseEmailConfigs);
-                rtbLog.AppendText("Удалены настройки DatabaseMail\r\n");
+                rtbLog.AppendText(Resources.Msg_Delete_ConfigDBMail);
 
             }
         }
@@ -226,18 +201,17 @@ namespace AutoCreateBackupPlan.Standart
                     DataBaseOperations.CreateDatabaseMailAddon(sqlConnection1, frm.email_address, frm.mailserver_name,
                                                                frm.username, frm.password, frm.email_operator);
 
-                    rtbLog.AppendText("Настроен модуль почты\r\n");
+                    rtbLog.AppendText(Resources.Msg_ConfigDBMail);
 
                     btCreateNotify.Enabled = true;
                     //btSendEmail.Enabled = true; //TODO: сделать модуль, который проверит все основные моменты
                     btInstall.Enabled = true;
 
-                    MessageBox.Show("Необходимо перезапустить вручную SQL Agent! Иначе не будут работать уведомления по почте");
+                    MessageBox.Show(Resources.Msg_NeedRebootAgent);
                 }
                 else
                 {
-                    log.Debug("Не настроен DatabaseMail");
-                    return;
+                    log.Debug(Resources.Msg_NotConfiguretedDBMail);
                 }
             }
         }
